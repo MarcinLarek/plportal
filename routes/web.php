@@ -117,6 +117,8 @@ Route::domain('admin.localhost')->group(function () {
 
         Route::prefix('/admins')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\AdminsController::class, 'adminslist'])->name('admin.admins');
+            Route::get('/create', [\App\Http\Controllers\Admin\AdminsController::class, 'create'])->name('admin.admins.create');
+            Route::post('/store', [\App\Http\Controllers\Admin\AdminsController::class, 'store'])->name('admin.admins.store');
             Route::get('/{id}/edit', [\App\Http\Controllers\Admin\AdminsController::class, 'edit'])->name('admin.admins.edit');
             Route::patch('/{id}/update', [\App\Http\Controllers\Admin\AdminsController::class, 'update'])->name('admin.admins.update');
             Route::get('/{id}/delete', [\App\Http\Controllers\Admin\AdminsController::class, 'delete'])->name('admin.admins.delete');
