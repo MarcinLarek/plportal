@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain('localhost')->group(function () {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+  Route::get('/dzial/{category}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
+  Route::get('/serach/', [App\Http\Controllers\HomeController::class, 'serach'])->name('serach');
+
 });
 
 Route::domain('fakty.localhost')->group(function () {
@@ -115,8 +118,7 @@ Route::domain('admin.localhost')->group(function () {
   Route::post('/store', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('admin.post.store');
 });
 
+
 Route::post('/images', [App\Http\Controllers\ImageController::class, 'store'])->name('images.store');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');

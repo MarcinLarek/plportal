@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link secondnavbaritem" href="#">PLPORTAL.pl</a>
+            <a class="nav-link secondnavbaritem" href="{{route('index')}}">PLPORTAL.pl</a>
           </li>
           <li class="nav-item">
             <a class="nav-link secondnavbaritem" href="{{ route('hobby.index') }}">Strona Główna</a>
@@ -33,7 +33,7 @@
           @foreach($categories as $category)
             @if($category->section == 'Hobby')
             <li class="nav-item">
-              <a class="nav-link secondnavbaritem" href="{{ route('fakty.category', ['category' => $category->category]) }}">{{$category->category}}</a>
+              <a class="nav-link secondnavbaritem" href="{{ route('hobby.category', ['category' => $category->category]) }}">{{$category->category}}</a>
             </li>
             @endif
           @endforeach

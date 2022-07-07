@@ -54,6 +54,7 @@ class PostController extends Controller
          'image' => $imagePath,
        );
 
+
         switch ($request['section']) {
           case 'Fakty':
               Posts::create($data);

@@ -76,7 +76,7 @@
 </div>
 @endif
 
-@if(count($posts) < 4)
+@if(count($posts) < 5)
 @else
 <div class="row pt-3">
   <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$firstpost->image}}')">
@@ -148,8 +148,8 @@
     </div>
 
   </div>
-  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$posts[6]->image}}')">
-    <h1> <b>{{$posts[6]->title}}</b> </h1>
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$posts[4]->image}}')">
+    <h1> <b>{{$posts[4]->title}}</b> </h1>
   </div>
 </div>
 @endif

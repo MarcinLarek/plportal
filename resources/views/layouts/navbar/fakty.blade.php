@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link secondnavbaritem" href="#">PLPORTAL.pl</a>
+            <a class="nav-link secondnavbaritem" href="{{route('index')}}">PLPORTAL.pl</a>
           </li>
           <li class="nav-item">
             <a class="nav-link secondnavbaritem" href="{{ route('fakty.index') }}">Strona Główna</a>
