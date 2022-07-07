@@ -113,11 +113,32 @@ Route::domain('turystyka.localhost')->group(function () {
 });
 
 Route::domain('admin.localhost')->group(function () {
-  Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
-  Route::get('/create/{section}', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('admin.post.create');
-  Route::post('/store', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('admin.post.store');
+  Route::middleware('auth:admin')->group(function () {
+
+        Route::prefix('/admins')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\AdminsController::class, 'adminslist'])->name('admin.admins');
+            Route::get('/{id}/edit', [\App\Http\Controllers\Admin\AdminsController::class, 'edit'])->name('admin.admins.edit');
+            Route::patch('/{id}/update', [\App\Http\Controllers\Admin\AdminsController::class, 'update'])->name('admin.admins.update');
+            Route::get('/{id}/delete', [\App\Http\Controllers\Admin\AdminsController::class, 'delete'])->name('admin.admins.delete');
+            Route::post('/{id}/deleteadmin', [\App\Http\Controllers\Admin\AdminsController::class, 'deleteadmin'])->name('admin.admins.deleteadmin');
+        });
+
+        Route::get('/', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
+        Route::get('/create/{section}', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('admin.post.create');
+        Route::post('/store', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('admin.post.store');
+
+    });
 });
 
+Route::middleware('guest')->group(function () {
+        Route::prefix('/sign-in')->group(function () {
+            Route::get('/', [\App\Http\Controllers\Admin\SignInController::class, 'index'])->name('admin.sign-in');
+            Route::post('/login', [\App\Http\Controllers\Admin\SignInController::class, 'login'])->name('admin.login');
+            Route::get('/LoginAdmin', [\App\Http\Controllers\Admin\SignInController::class, 'LoginAdmin'])->name('admin.LoginAdmin');
+            Route::get('/AdminLogin/{token}', [\App\Http\Controllers\Admin\SignInController::class, 'AdminLogin'])->name('admin.AdminLogin');
+            Route::get('/adminlogout', [\App\Http\Controllers\Admin\SignInController::class, 'adminlogout'])->name('admin.adminlogout');
+        });
+    });
 
 Route::post('/images', [App\Http\Controllers\ImageController::class, 'store'])->name('images.store');
 
