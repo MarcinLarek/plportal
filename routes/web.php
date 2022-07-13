@@ -16,12 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain(config('app.name'))->group(function () {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-  Route::get('/dział/{category}', [App\Http\Controllers\HomeController::class, 'category'])->name('category');
-  Route::get('/serach/', [App\Http\Controllers\HomeController::class, 'serach'])->name('serach');
   Route::get('/{section}', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
   Route::get('/{section}/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
-  Route::get('/{section}/{category}', [App\Http\Controllers\PostController::class, 'category'])->name('post.category');
-  Route::get('/{section}/serach/', [App\Http\Controllers\PostController::class, 'serach'])->name('post.serach');
+  Route::get('/{section}/Kategorie/{category}', [App\Http\Controllers\PostController::class, 'category'])->name('post.category');
+  Route::post('/{section}/wyszukaj/', [App\Http\Controllers\PostController::class, 'serach'])->name('post.serach');
 });
 
 Route::domain('admin.'.config('app.name'))->group(function () {

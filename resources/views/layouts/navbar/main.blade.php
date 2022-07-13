@@ -14,7 +14,7 @@
                           </a>
 
                           @foreach($section->category as $category)
-                          <a class="dropdown-item" href="#">
+                          <a class="dropdown-item" href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">
                               {{$category->category}}
                           </a>
                           @endforeach

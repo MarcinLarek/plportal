@@ -1,5 +1,4 @@
-
-@extends('layouts.navbar.sluzbymundurowe')
+@extends('layouts.navbar.'.$section)
 @section('mainpage')
 <div class="row">
     <div class="col-xl-9 col-l-9 col-md-12 col-sm-12 ">
@@ -18,8 +17,8 @@
         </div>
         <div class="row">
           <p><b> Dział: </b>
-          @foreach ($post->category as $tag)
-          <a href="/dzial/{{$tag}}">{{$tag}} </a>
+          @foreach ($post->getcategories() as $tag)
+          <a href="{{ route('post.category', ['category' => $tag, 'section' => $post->getsection()]) }}">{{$tag->category}} </a>
           @endforeach</p>
         </div>
     </div>
@@ -36,12 +35,12 @@
      @break($loop->iteration == 6)
     <div class="row">
 
-        <div class="mb-2 col-3 minisquare d-flex" style="background-image: url('/storage/{{ $list->image }}')"><a class="w-100" href="{{ route('sluzbymundurowe.show', ['post' => $list->title]) }}">
+        <div class="mb-2 col-3 minisquare d-flex" style="background-image: url('/storage/{{ $list->image }}')"><a class="w-100" href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
   </a></div>
 
       <div class="col-9">
         <div class="">
-          <a href="{{ route('sluzbymundurowe.show', ['post' => $list->title]) }}">
+          <a href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
             <b class="text-primary" style="font-size:12px;"> {{$list->title}}</b>
           </a>
         </div>
@@ -58,7 +57,7 @@
     </div>
     @foreach($topposts as $list)
      <div class="col-12">
-       <a href="{{ route('sluzbymundurowe.show', ['post' => $list->title]) }}">
+       <a href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
          <b class="text-dark"> {{$list->title}}</b>
        </a>
      <hr>
@@ -73,12 +72,12 @@
     @continue($loop->iteration < 6)
     <div class="row">
 
-        <div class="mb-2 col-4 minisquare d-flex" style="background-image: url('/storage/{{ $list->image }}')"><a class="w-100" href="{{ route('sluzbymundurowe.show', ['post' => $list->title]) }}">
+        <div class="mb-2 col-4 minisquare d-flex" style="background-image: url('/storage/{{ $list->image }}')"><a class="w-100" href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
     </a></div>
 
       <div class="col-8">
         <div class="">
-          <a href="{{ route('sluzbymundurowe.show', ['post' => $list->title]) }}">
+          <a href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
             <b class="text-primary"> {{$list->title}}</b>
           </a>
         </div>

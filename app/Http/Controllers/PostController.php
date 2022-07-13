@@ -16,97 +16,86 @@ class PostController extends Controller
   public function index(Section $section)
   {
 
-      $categorylist = Category::where('section_id',$section->id)->get();
-      $filteredcategories = PostCategories::take(0)->get();
-      foreach ($categorylist as $catli ) {
-        $temp1 = PostCategories::where('category_id',$catli->id)->get();;
-        foreach ($temp1 as $tempp1) {
-          $filteredcategories->push($tempp1);
-        }
-      }
-      $posttoshow = Post::take(0)->get();
-      foreach ($filteredcategories as $filtcat) {
-        $temp = Post::where('id', $filtcat->post_id)->get();
-        foreach ($temp as $tempp) {
-          $posttoshow->push($tempp);
-        }
-      }
-      $posts = $posttoshow->unique();
+      $posts = $section->getposts();
 
+      $categorylist = Category::where('section_id',$section->id)->get();
       $firstpost = $posts->first();
       $posts = $posts->slice(1)->take(28);
       $sections = Section::get();
       $navbarsection = $section->section;
-      return view('fakty\index')
+      return view($section->section.'\index')
        ->with('firstpost', $firstpost)
        ->with('posts', $posts)
        ->with('categories', $categorylist)
-       ->with('navbarsection', $navbarsection)
+       ->with('section', $navbarsection)
        ->with('sections', $sections);
   }
 
-  public function show(Post $post)
+  public function show(Section $section, Post $post)
   {
-    $posts = DB::table('posts')->orderBy('id', 'DESC')->take(10)->get();
-    $topposts = DB::table('posts')->orderBy('reads', 'DESC')->take(10)->get();
-    foreach ($posts as $post2) {
-      $post2->category = str_getcsv($post2->category,"|");
-    }
-    $post->category = str_getcsv($post->category,"|");
-
+    $posts = $section->getposts()->sortByDesc('id')->take(10);
+    $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $post->reads++;
     $post->update();
-    $categories = DB::table('category')->get();
-    return view('fakty\show')
+    $categorylist = Category::where('section_id',$section->id)->get();
+    $sections = Section::get();
+
+    return view($section->section.'\show')
     ->with('post', $post)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
-    ->with('categories', $categories);
+    ->with('section', $section->section)
+    ->with('sections', $sections)
+    ->with('categories', $categorylist);
   }
 
-  public function category($category)
+  public function category(Section $section, Category $category)
   {
-    $main = DB::table('posts')->where('category','like', '%'.$category.'%')->orderBy('id', 'DESC')->paginate(10);
-    foreach ($main as $post2) {
-      $post2->category = str_getcsv($post2->category,"|");
+
+    $categorylist = PostCategories::where('category_id', $category->id)->get();
+    $main = Post::take(0)->get();
+    foreach ($categorylist as $catli ) {
+      $temp1 = Post::where('id',$catli->post_id)->get();
+      foreach ($temp1 as $tempp1) {
+        $main->push($tempp1);
+      }
     }
 
-    $posts = DB::table('posts')->orderBy('id', 'DESC')->take(10)->get();
-    $topposts = DB::table('posts')->orderBy('reads', 'DESC')->take(10)->get();
-    foreach ($posts as $post2) {
-      $post2->category = str_getcsv($post2->category,"|");
-    }
+    $posts = $section->getposts()->sortByDesc('id')->take(10);
+    $topposts = $section->getposts()->sortByDesc('reads')->take(10);
+    $categorylist = Category::where('section_id',$section->id)->get();
+    $sections = Section::get();
 
-    $categories = DB::table('category')->get();
-    return view('fakty\category')
+    return view($section->section.'\category')
     ->with('main', $main)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
-    ->with('categories', $categories);
+    ->with('section', $section->section)
+    ->with('sections', $sections)
+    ->with('categories', $categorylist);
   }
 
-  public function serach(Request $request)
+  public function serach(Section $section, Request $request)
   {
+
     $serach = $request['serach'];
-    $main = DB::table('posts')->where('title','like', '%'.$serach.'%')
+    $main = Post::where('title','like', '%'.$serach.'%')
                               ->orwhere('postcontent','like', '%'.$serach.'%')
                               ->orderBy('id', 'DESC')
-                              ->paginate(10);
-    foreach ($main as $post2) {
-      $post2->category = str_getcsv($post2->category,"|");
-    }
+                              ->get();
 
-    $posts = DB::table('posts')->orderBy('id', 'DESC')->take(10)->get();
-    $topposts = DB::table('posts')->orderBy('reads', 'DESC')->take(10)->get();
-    foreach ($posts as $post2) {
-      $post2->category = str_getcsv($post2->category,"|");
-    }
-    $categories = DB::table('category')->get();
-    return view('fakty\category')
+    $posts = $section->getposts()->sortByDesc('id')->take(10);
+    $topposts = $section->getposts()->sortByDesc('reads')->take(10);
+    $categorylist = Category::where('section_id',$section->id)->get();
+    $sections = Section::get();
+
+    return view($section->section.'\category')
     ->with('main', $main)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
-    ->with('categories', $categories);
+    ->with('section', $section->section)
+    ->with('sections', $sections)
+    ->with('categories', $categorylist);
   }
 
 }

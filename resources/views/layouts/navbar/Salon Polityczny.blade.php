@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/turystykanav.png');">
+    <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/salonpolitycznynav.png');">
       <div class="text-end pb-1 w-100">
         <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
           @csrf

@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/faktynav.png');">
         <div class="text-end pb-1 w-100">
-          <form id="search" action="" method="get">
+          <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
             @csrf
             <input type="text" name="serach" value="">
             <input type="submit" value="Szukaj">
@@ -28,11 +28,11 @@
             <a class="nav-link secondnavbaritem" href="{{route('index')}}">PLPORTAL.pl</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link secondnavbaritem" href="">Strona Główna</a>
+            <a class="nav-link secondnavbaritem" href="{{ route( 'post.index', ['section' => $section] ) }}">Strona Główna</a>
           </li>
           @foreach($categories as $category)
             <li class="nav-item">
-              <a class="nav-link secondnavbaritem" href="">{{$category->category}}</a>
+              <a class="nav-link secondnavbaritem" href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">{{$category->category}}</a>
             </li>
           @endforeach
         </ul>
