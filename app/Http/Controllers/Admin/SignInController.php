@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AdminLoginMail;
 use Illuminate\Support\Facades\DB;
+use App\Models\Section;
 
 
 class SignInController extends Controller
@@ -18,10 +19,10 @@ class SignInController extends Controller
     public function index()
     {
         $notification = 0;
-        $categories = DB::table('category')->get();
+        $sections = Section::get();
         return view('/admin/sign-in/index')
         ->with('notification', $notification)
-        ->with('categories', $categories);
+        ->with('sections', $sections);
     }
 
     public function login(Request $request)
@@ -31,16 +32,16 @@ class SignInController extends Controller
           $user->update(['token' => Str::random(60)]);
           Mail::to($user['email'])->send(new AdminLoginMail($user));
           $notification = 2;
-          $categories = DB::table('category')->get();
+          $sections = Section::get();
           return view('/admin/sign-in/index')
       ->with('notification', $notification)
-      ->with('categories', $categories);
+      ->with('sections', $sections);
       } else {
           $notification = 1;
-          $categories = DB::table('category')->get();
+          $sections = Section::get();
           return view('/admin/sign-in/index')
       ->with('notification', $notification)
-      ->with('categories', $categories);
+      ->with('sections', $sections);
       }
     }
 

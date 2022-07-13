@@ -8,31 +8,32 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\Section;
 
 class AdminsController extends Controller
 {
     public function adminslist()
     {
       $admins = Admin::all();
-      $categories = DB::table('category')->get();
+      $sections = Section::get();
       return view('/admin/admins/index')
       ->with('admins', $admins)
-      ->with('categories', $categories);
+      ->with('sections', $sections);
     }
 
     public function edit($id)
     {
       $admin = Admin::find($id);
-      $categories = DB::table('category')->get();
+      $sections = Section::get();
       return view('/admin/admins/edit')
       ->with('admin', $admin)
-      ->with('categories', $categories);
+      ->with('sections', $sections);
     }
     public function create()
     {
-      $categories = DB::table('category')->get();
+      $sections = Section::get();
       return view('/admin/admins/create')
-      ->with('categories', $categories);
+      ->with('sections', $sections);
     }
 
     public function update($id, Request $request)
@@ -96,10 +97,10 @@ class AdminsController extends Controller
     public function delete($id)
     {
       $admin = Admin::find($id);
-      $categories = DB::table('category')->get();
+      $sections = Section::get();
       return view('/admin/admins/delete')
       ->with('admin', $admin)
-      ->with('categories', $categories);
+      ->with('sections', $sections);
     }
     public function deleteadmin($id)
     {

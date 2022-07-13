@@ -173,8 +173,8 @@
                 <div class="col-sm-3">
                     <label for="category" class="control-label">Zaznacz kategorie</label>
                     <select size="24" class="form-select col-12" multiple="multiple" name="category[]" id="category">
-                      @foreach($categories as $category)
-                        <option value="{{$category->category}}">{{$category->category}}</option>
+                      @foreach($category as $cat)
+                          <option value="{{$cat->id}}">{{$cat->category}}</option>
                       @endforeach
                     </select>
                     @error('category')

@@ -7,15 +7,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Section;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $categories = DB::table('category')->get();
+        $sections = Section::get();
         return view('admin\index')
-        ->with('categories', $categories);
+        ->with('sections', $sections);
     }
 
 }

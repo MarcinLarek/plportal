@@ -23,4 +23,12 @@ class Post extends Model
    {
        return 'title'; // db column name you would like to appear in the url.
    }
+
+   public function category() {
+      return $this->hasMany(PostCategories::class);
+   }
+
+   public function section() {
+      return $this->belongsTo(Section::class);
+   }
 }
