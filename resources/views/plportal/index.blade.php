@@ -85,26 +85,26 @@
   <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
     <div class="row">
       <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
-        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $post[0], 'section' => $post[0]->getsection()]) }}">
-        <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[0]->image}}')">
-          <h5> <b>{{$posts[0]->title}}</b> </h5>
-        </div>
-        </a>
-        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $post[2], 'section' => $post[2]->getsection()]) }}">
-        <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[2]->image}}')">
-          <h5> <b>{{$posts[2]->title}}</b> </h5>
-        </div>
-        </a>
-      </div>
-      <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
-        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $post[1], 'section' => $post[1]->getsection()]) }}">
+        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[1], 'section' => $posts[1]->getsection()]) }}">
         <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[1]->image}}')">
           <h5> <b>{{$posts[1]->title}}</b> </h5>
         </div>
         </a>
-        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $post[3], 'section' => $post[3]->getsection()]) }}">
+        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[3], 'section' => $posts[3]->getsection()]) }}">
         <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[3]->image}}')">
           <h5> <b>{{$posts[3]->title}}</b> </h5>
+        </div>
+        </a>
+      </div>
+      <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
+        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[2], 'section' => $posts[2]->getsection()]) }}">
+        <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[2]->image}}')">
+          <h5> <b>{{$posts[2]->title}}</b> </h5>
+        </div>
+        </a>
+        <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[4], 'section' => $posts[4]->getsection()]) }}">
+        <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[4]->image}}')">
+          <h5> <b>{{$posts[4]->title}}</b> </h5>
         </div>
         </a>
       </div>
@@ -148,9 +148,13 @@
     </div>
 
   </div>
-  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$posts[4]->image}}')">
-    <h1> <b>{{$posts[4]->title}}</b> </h1>
+
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$posts[5]->image}}')">
+    <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[5], 'section' => $posts[5]->getsection()]) }}">
+    <h1> <b>{{$posts[5]->title}}</b> </h1>
+    </a>
   </div>
+
 </div>
 @endif
 
