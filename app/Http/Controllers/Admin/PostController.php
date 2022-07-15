@@ -19,7 +19,7 @@ class PostController extends Controller
         $sections = Section::get();
         $tempsection = Section::where('section', $section)->first();
         $category = Category::where('section_id',$tempsection['id'])->get();
-        return view('admin\create')
+        return view('admin.create')
               ->with('sections', $sections)
               ->with('section', $section)
               ->with('category', $category);
