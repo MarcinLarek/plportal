@@ -14,7 +14,7 @@ class HomeController extends Controller
        $firstpost = Post::orderBy('id', 'DESC')->first();
        $posts = Post::orderBy('id', 'DESC')->take(28)->get();
        $sections = Section::get();
-         return view('plportal/index')
+         return view('plportal.index')
          ->with('firstpost', $firstpost)
          ->with('posts', $posts)
          ->with('sections', $sections);

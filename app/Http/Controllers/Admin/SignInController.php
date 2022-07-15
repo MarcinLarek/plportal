@@ -20,7 +20,7 @@ class SignInController extends Controller
     {
         $notification = 0;
         $sections = Section::get();
-        return view('/admin/sign-in/index')
+        return view('admin.sign-in.index')
         ->with('notification', $notification)
         ->with('sections', $sections);
     }
@@ -33,13 +33,13 @@ class SignInController extends Controller
           Mail::to($user['email'])->send(new AdminLoginMail($user));
           $notification = 2;
           $sections = Section::get();
-          return view('/admin/sign-in/index')
+          return view('admin.sign-in.index')
       ->with('notification', $notification)
       ->with('sections', $sections);
       } else {
           $notification = 1;
           $sections = Section::get();
-          return view('/admin/sign-in/index')
+          return view('admin.sign-in.index')
       ->with('notification', $notification)
       ->with('sections', $sections);
       }

@@ -16,7 +16,7 @@ class AdminsController extends Controller
     {
       $admins = Admin::all();
       $sections = Section::get();
-      return view('/admin/admins/index')
+      return view('admin.admins.index')
       ->with('admins', $admins)
       ->with('sections', $sections);
     }
@@ -25,14 +25,14 @@ class AdminsController extends Controller
     {
       $admin = Admin::find($id);
       $sections = Section::get();
-      return view('/admin/admins/edit')
+      return view('admin.admins.edit')
       ->with('admin', $admin)
       ->with('sections', $sections);
     }
     public function create()
     {
       $sections = Section::get();
-      return view('/admin/admins/create')
+      return view('admin.admins.create')
       ->with('sections', $sections);
     }
 
@@ -98,7 +98,7 @@ class AdminsController extends Controller
     {
       $admin = Admin::find($id);
       $sections = Section::get();
-      return view('/admin/admins/delete')
+      return view('admin.admins.delete')
       ->with('admin', $admin)
       ->with('sections', $sections);
     }

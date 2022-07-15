@@ -23,7 +23,7 @@ class PostController extends Controller
       $posts = $posts->slice(1)->take(28);
       $sections = Section::get();
       $navbarsection = $section->section;
-      return view($section->section.'\index')
+      return view($section->section.'.index')
        ->with('firstpost', $firstpost)
        ->with('posts', $posts)
        ->with('categories', $categorylist)
@@ -40,7 +40,7 @@ class PostController extends Controller
     $categorylist = Category::where('section_id',$section->id)->get();
     $sections = Section::get();
 
-    return view($section->section.'\show')
+    return view($section->section.'.show')
     ->with('post', $post)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
@@ -66,7 +66,7 @@ class PostController extends Controller
     $categorylist = Category::where('section_id',$section->id)->get();
     $sections = Section::get();
 
-    return view($section->section.'\category')
+    return view($section->section.'.category')
     ->with('main', $main)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
@@ -89,7 +89,7 @@ class PostController extends Controller
     $categorylist = Category::where('section_id',$section->id)->get();
     $sections = Section::get();
 
-    return view($section->section.'\category')
+    return view($section->section.'.category')
     ->with('main', $main)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
