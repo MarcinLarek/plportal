@@ -6,6 +6,7 @@
         <h1>Pomyślnie zapisano dane</h1>
     </div>
     @endif
+    <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a>
     <div class="row text-center">
       <div class="col-12">
         <hr>
