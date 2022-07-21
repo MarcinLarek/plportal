@@ -21,7 +21,7 @@ class CreateAdminsTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('token');
-            $table->boolean('error_notification')->default(1);
+            $table->boolean('global_privileges')->default(0);
             $table->timestamps();
         });
     }

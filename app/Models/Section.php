@@ -41,4 +41,9 @@ class Section extends Model
       $posts = $posttoshow->unique();
       return $posts;
     }
+
+    public function menaged()
+    {
+        return $this->belongsToMany(Admin::class);
+    }
 }

@@ -24,6 +24,9 @@ Route::domain(config('app.name'))->group(function () {
             Route::patch('/{id}/update', [\App\Http\Controllers\Admin\AdminsController::class, 'update'])->name('admin.admins.update');
             Route::get('/{id}/delete', [\App\Http\Controllers\Admin\AdminsController::class, 'delete'])->name('admin.admins.delete');
             Route::post('/{id}/deleteadmin', [\App\Http\Controllers\Admin\AdminsController::class, 'deleteadmin'])->name('admin.admins.deleteadmin');
+            Route::get('/{id}/editprivileges', [\App\Http\Controllers\Admin\AdminsController::class, 'editprivileges'])->name('admin.admins.editprivileges');
+            Route::get('/{id}/storeprivileges', [\App\Http\Controllers\Admin\AdminsController::class, 'storeprivileges'])->name('admin.admins.storeprivileges');
+
         });
 
         Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');

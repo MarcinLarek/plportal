@@ -17,8 +17,9 @@
           <th>Login</th>
           <th>Imię i nazwisko</th>
           <th>Email</th>
-          <th>Powiadomienia o błędach</th>
+          <th>Super Admin</th>
           <th>Data rejestracji</th>
+          <th>Przywileje</th>
           <th>Opcje</th>
         </tr>
       </thead>
@@ -31,12 +32,17 @@
           <td>{{ $admin->login }}</td>
           <td>{{ $admin->name}} {{$admin->surname}}</td>
           <td>{{ $admin->email }}</td>
-          @if($admin->error_notification == 1)
+          @if($admin->global_privileges == 1)
           <td class="table-success">Tak</td>
           @else
           <td class="table-danger">Nie</td>
           @endif
           <td>{{ $admin->created_at }}</td>
+          <td>
+            <a href="{{ route('admin.admins.editprivileges', ['id' => $admin->id]) }}" class="text-primary">
+              Edytuj
+            </a>
+          </td>
           <td>
             <a href="{{ route('admin.admins.edit', ['id' => $admin->id]) }}" class="text-primary">
               Edytuj

@@ -109,4 +109,26 @@ class AdminsController extends Controller
       $admins = Admin::all();
       return redirect()->route('admin.admins')->with('successalert', 'successalert');
     }
+
+    public function editprivileges($id)
+    {
+      $admin = Admin::find($id);
+      $sections = Section::get();
+      return view('admin.admins.editprivileges')
+      ->with('admin', $admin)
+      ->with('sections', $sections);
+
+    }
+
+    public function storeprivileges($id)
+    {
+      $admin = auth()->user();
+      $section = Section::find($id);
+      $admin->menages()->toggle($id);
+      return redirect()->back();
+
+    }
+
+
+
 }

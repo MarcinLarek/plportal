@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $sections = Section::get();
+        //dd(auth()->user());
         return view('admin.index')
         ->with('sections', $sections);
     }
