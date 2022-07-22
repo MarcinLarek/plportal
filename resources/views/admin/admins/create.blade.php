@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(auth()->user()->global_privileges==1)
 <div class="container">
   <h1 class="mt-md-4">Wprowadź dane administratora</h1>
   <hr />
@@ -90,4 +91,9 @@
     </div>
   </div>
 </div>
+@else
+<div class="alert alert-danger" role="alert">
+  Brak uprawnień do przeglądania strony
+</div>
+@endif
 @endsection

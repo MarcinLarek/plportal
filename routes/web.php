@@ -25,13 +25,18 @@ Route::domain(config('app.name'))->group(function () {
             Route::get('/{id}/delete', [\App\Http\Controllers\Admin\AdminsController::class, 'delete'])->name('admin.admins.delete');
             Route::post('/{id}/deleteadmin', [\App\Http\Controllers\Admin\AdminsController::class, 'deleteadmin'])->name('admin.admins.deleteadmin');
             Route::get('/{id}/editprivileges', [\App\Http\Controllers\Admin\AdminsController::class, 'editprivileges'])->name('admin.admins.editprivileges');
-            Route::get('/{id}/storeprivileges', [\App\Http\Controllers\Admin\AdminsController::class, 'storeprivileges'])->name('admin.admins.storeprivileges');
+            Route::get('/{adminid}/storeprivileges/{sectionid}', [\App\Http\Controllers\Admin\AdminsController::class, 'storeprivileges'])->name('admin.admins.storeprivileges');
 
         });
 
         Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
         Route::get('/admin/create/{section}', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('admin.post.create');
+        Route::get('/admin/edit/{post}', [App\Http\Controllers\Admin\PostController::class, 'edit'])->name('admin.post.edit');
+        Route::get('/admin/list/{section}', [App\Http\Controllers\Admin\PostController::class, 'list'])->name('admin.post.list');
         Route::post('/admin/store', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('admin.post.store');
+        Route::patch('/admin/update/{post}', [App\Http\Controllers\Admin\PostController::class, 'update'])->name('admin.post.update');
+        Route::get('/admin/{post}/delete', [\App\Http\Controllers\Admin\PostController::class, 'delete'])->name('admin.post.delete');
+        Route::post('/admin/{post}/deletpost', [\App\Http\Controllers\Admin\PostController::class, 'deletepost'])->name('admin.post.deletepost');
 
     });
     Route::middleware('guest')->group(function () {

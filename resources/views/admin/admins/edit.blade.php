@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(auth()->user()->global_privileges==1)
 <div class="container">
   <h1 class="mt-md-4">Edytuj dane administratora</h1>
   <hr />
@@ -44,9 +45,9 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="error_notification" class="control-label">Otrzymywać powiadomienia o błędach?</label>
+                  <label for="error_notification" class="control-label">Super Admin</label>
                   <select name="error_notification" id="error_notification" class="custom-select">
-                    @if($admin->error_notification == 1)
+                    @if($admin->global_privileges == 1)
                     <option value="1">Tak</option>
                     <option value="0">Nie</option>
                     @else
@@ -101,4 +102,9 @@
     </div>
   </div>
 </div>
+@else
+<div class="alert alert-danger" role="alert">
+  Brak uprawnień do przeglądania strony
+</div>
+@endif
 @endsection

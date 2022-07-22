@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(auth()->user()->global_privileges==1)
 <div class="container">
   <div class="row pt-5 pb-3">
     <h2>Zarządzanie przywilejami dla admina {{$admin->name}} {{$admin->surname}} ({{$admin->login}})</h2>
@@ -25,7 +26,7 @@
             @else
             <td class="table-danger">Nie</td>
             @endif
-            <td> <a href="{{((route('admin.admins.storeprivileges', ['id' => $section->id])))}}">Przełącz</a> </td>
+            <td> <a href="{{((route('admin.admins.storeprivileges', ['sectionid' => $section->id,'adminid' => $admin->id])))}}">Przełącz</a> </td>
           </tr>
         @endforeach
       </tbody>
@@ -33,4 +34,9 @@
   </div>
 
 </div>
+@else
+<div class="alert alert-danger" role="alert">
+  Brak uprawnień do przeglądania strony
+</div>
+@endif
 @endsection

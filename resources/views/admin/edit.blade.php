@@ -10,14 +10,15 @@
     <div class="pt-4 ">
       <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a>
     </div>
-    <form id="search" action="{{route('admin.post.store')}}" enctype="multipart/form-data" method="post">
+    <form id="search" action="{{ route('admin.post.update', ['post' => $post->id]) }}" enctype="multipart/form-data" method="post">
         @csrf
+        @method('PATCH')
         <fieldset>
 
             <div class="row pt-2">
                 <div class="col-12">
                     <label for="title" class="control-label">Tyutuł posta</label>
-                    <input name="title" id="title" class="form-control" placeholder="Tytuł" value="{{ old('title') }}" />
+                    <input name="title" id="title" class="form-control" placeholder="Tytuł" value="{{ old('title', $post->title) }}" />
                     @error('title')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -27,7 +28,7 @@
             <div class="row pt-4">
                 <div class="col-12">
                     <label for="author" class="control-label">Autor:</label>
-                    <input name="author" id="author" class="form-control" placeholder="Autor" value="{{ old('author') }}" />
+                    <input name="author" id="author" class="form-control" placeholder="Autor" value="{{ old('author', $post->author) }}" />
                     @error('author')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -36,7 +37,7 @@
             <div class="row pt-4">
                 <div class="col-12">
                     <label for="source" class="control-label">Źródło:</label>
-                    <input name="source" id="source" class="form-control" placeholder="Źródło" value="{{ old('source') }}" />
+                    <input name="source" id="source" class="form-control" placeholder="Źródło" value="{{ old('source', $post->source) }}" />
                     @error('source')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -46,7 +47,7 @@
             <div class="row pt-4">
                 <div class="col-12">
                     <label for="postcontent" class="control-label">Zawartość posta:</label>
-                    <textarea name="postcontent" id="postcontent" value="{{ old('postcontent') }}" class="form-control"></textarea>
+                    <textarea name="postcontent" id="postcontent" class="form-control">{{old('postcontent', $post->postcontent)}}</textarea>
                     @error('postcontent')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
@@ -171,11 +172,11 @@
 
 
             <div class="row pt-4">
-                <div class="col-sm-3">
+                <div hidden class="col-sm-3">
                     <label for="category" class="control-label">Zaznacz kategorie</label>
                     <select size="24" class="form-select col-12" multiple="multiple" name="category[]" id="category">
                       @foreach($category as $cat)
-                          <option value="{{$cat->id}}">{{$cat->category}}</option>
+                          <option selected value="{{$cat->id}}">{{$cat->category}}</option>
                       @endforeach
                     </select>
                     @error('category')

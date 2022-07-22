@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@if(auth()->user()->global_privileges==1)
 <div class="container">
   <h4>Administratorzy</h4>
   <hr />
@@ -8,7 +9,7 @@
     <h1>Zmiany zostały zapisane</h1>
   </div>
   @endif
-  <a href="{{route('admin.admins.create')}}" class="text-primary" >Dodaj administratora</a>
+    <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a> <a href="{{route('admin.admins.create')}}" class="text-primary" >Dodaj administratora</a>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>
@@ -39,9 +40,13 @@
           @endif
           <td>{{ $admin->created_at }}</td>
           <td>
-            <a href="{{ route('admin.admins.editprivileges', ['id' => $admin->id]) }}" class="text-primary">
-              Edytuj
-            </a>
+            @if($admin->global_privileges == 1)
+                Super Admin
+            @else
+              <a href="{{ route('admin.admins.editprivileges', ['id' => $admin->id]) }}" class="text-primary">
+                Edytuj
+              </a>
+            @endif
           </td>
           <td>
             <a href="{{ route('admin.admins.edit', ['id' => $admin->id]) }}" class="text-primary">
@@ -59,4 +64,9 @@
     </table>
   </div>
 </div>
+@else
+<div class="alert alert-danger" role="alert">
+  Brak uprawnień do przeglądania strony
+</div>
+@endif
 @endsection

@@ -120,11 +120,11 @@ class AdminsController extends Controller
 
     }
 
-    public function storeprivileges($id)
+    public function storeprivileges($adminid,$sectionid)
     {
-      $admin = auth()->user();
-      $section = Section::find($id);
-      $admin->menages()->toggle($id);
+      $admin = Admin::find($adminid);
+      $section = Section::find($sectionid);
+      $admin->menages()->toggle($sectionid);
       return redirect()->back();
 
     }

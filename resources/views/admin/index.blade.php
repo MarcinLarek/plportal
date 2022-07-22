@@ -22,7 +22,7 @@
           <div class="col-md-3 pb-3">
               <div href="#" class="card text-center shadow" style="height:200px;">
                   <div class="card-body mt-5 mb-5">
-                      <a class="stretched-link" href="{{ route('admin.post.create', ['section' => $section->section]) }}">
+                      <a class="stretched-link" href="{{ route('admin.post.list', ['section' => $section->section]) }}">
                           <h2>{{ $section->section }}</h2>
                       </a>
                   </div>
