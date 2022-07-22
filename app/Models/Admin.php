@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
 class Admin extends Authenticatable
 {
@@ -18,7 +19,26 @@ class Admin extends Authenticatable
         'surname',
         'token',
         'email',
-        'error_notification',
+        'global_privileges',
         'password',
     ];
+
+    public function menages()
+    {
+        return $this->belongsToMany(Section::class);
+    }
+
+    public function ifmenages($id)
+    {
+      $find = DB::table('admin_section')
+                  ->where('section_id',$id)
+                  ->where('admin_id',$this->id)
+                  ->first();
+      if ($find == null) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
 }

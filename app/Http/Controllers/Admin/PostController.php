@@ -14,15 +14,70 @@ use App\Models\PostCategories;
 
 class PostController extends Controller
 {
+    public function list($section)
+    {
+        $permissioncheck = Section::where('section',$section)->first();
+        $posts = $permissioncheck->getposts();
+        $sections = Section::get();
+        $tempsection = Section::where('section', $section)->first();
+        $category = Category::where('section_id',$tempsection['id'])->get();
+        return view('admin.list')
+              ->with('sections', $sections)
+              ->with('section', $section)
+              ->with('posts', $posts)
+              ->with('category', $category)
+              ->with('permissioncheck',$permissioncheck);
+    }
+
     public function create($section)
     {
+        $permissioncheck = Section::where('section',$section)->first();
         $sections = Section::get();
         $tempsection = Section::where('section', $section)->first();
         $category = Category::where('section_id',$tempsection['id'])->get();
         return view('admin.create')
               ->with('sections', $sections)
               ->with('section', $section)
-              ->with('category', $category);
+              ->with('category', $category)
+              ->with('permissioncheck',$permissioncheck);
+    }
+
+    public function edit($post)
+    {
+        $post = Post::find($post);
+        $section = $post->getsection();
+        $section = $section->section;
+        $permissioncheck = Section::where('section',$section)->first();
+        $sections = Section::get();
+        $tempsection = Section::where('section', $section)->first();
+        $category = Category::where('section_id',$tempsection['id'])->get();
+        return view('admin.edit')
+              ->with('post', $post)
+              ->with('sections', $sections)
+              ->with('section', $section)
+              ->with('category', $category)
+              ->with('permissioncheck',$permissioncheck);
+    }
+
+    public function update($post, PostRequest $request)
+    {
+        $post = Post::find($post);
+        $imagePath = request('image')->store('uploads', 'public');
+        $optimizerChain = OptimizerChainFactory::create();
+        $optimizerChain->optimize('storage/'.$imagePath);
+
+        //ImageOptimizer::optimize('storage/'.$imagePath);
+
+        $data = array(
+         'title' => $request['title'],
+         'author' => $request['author'],
+         'source' => $request['source'],
+         'postcontent' => $request['postcontent'],
+         'image' => $imagePath,
+       );
+
+      $post->update($data);
+        return redirect()->back()->with('successalert', 'successalert');
     }
 
     public function store(PostRequest $request)
@@ -52,5 +107,20 @@ class PostController extends Controller
        }
 
         return redirect()->back()->with('successalert', 'successalert');
+    }
+
+    public function delete($id)
+    {
+      $post = Post::find($id);
+      $sections = Section::get();
+      return view('admin.postdelete')
+      ->with('post', $post)
+      ->with('sections', $sections);
+    }
+    public function deletepost($id)
+    {
+      $post = Post::find($id);
+      $post->delete();
+      return redirect()->route('admin.index')->with('successalert', 'successalert');
     }
 }

@@ -52,7 +52,7 @@ class SignInController extends Controller
           return redirect()->route('admin.index');
       }
       $user->update(['token' => Str::random(60)]);
-      Auth::guard('admin')->login($user->first());
+      Auth::guard('admin')->login($user);
       return redirect()->route('admin.index');
     }
 

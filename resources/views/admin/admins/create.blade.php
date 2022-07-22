@@ -1,13 +1,17 @@
 @extends('layouts.app')
 @section('content')
+@if(auth()->user()->global_privileges==1)
 <div class="container">
-  <h1 class="mt-md-4">Edytuj dane administratora</h1>
+  <h1 class="mt-md-4">Wprowadź dane administratora</h1>
   <hr />
+  <div class="pb-1">
+    <a href="{{route('admin.admins')}}" class="text-primary"> <u>Powrót</u> </a>
+  </div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
       <div class="card  border-0">
         <div class="card-body">
-          <h4 class="card-title">Edycja administratora</h4>
+          <h4 class="card-title">Dodaj administratora</h4>
           <form action="{{ route('admin.admins.store') }}" method="post">
             @csrf
             <fieldset>
@@ -87,4 +91,9 @@
     </div>
   </div>
 </div>
+@else
+<div class="alert alert-danger" role="alert">
+  Brak uprawnień do przeglądania strony
+</div>
+@endif
 @endsection
