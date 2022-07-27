@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'title' => ['required'],
             'author' => ['required'],
             'source' => ['required'],
-            'image' => ['required', 'image', 'unique:posts'],
+            'image' => ['required', 'image', 'unique:posts','max:5000'],
             'postcontent' => ['required'],
             'category' => ['required'],
             'section' => ['required'],
