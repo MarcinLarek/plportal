@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Models\Section;
 use App\Models\Post;
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\PostCategories;
 
@@ -39,6 +40,7 @@ class PostController extends Controller
     $post->update();
     $categorylist = Category::where('section_id',$section->id)->get();
     $sections = Section::get();
+    $admin = Admin::where('id',$post->admin_id)->first();
 
     return view($section->section.'.show')
     ->with('post', $post)
@@ -46,6 +48,7 @@ class PostController extends Controller
     ->with('topposts', $topposts)
     ->with('section', $section->section)
     ->with('sections', $sections)
+    ->with('admin', $admin)
     ->with('categories', $categorylist);
   }
 

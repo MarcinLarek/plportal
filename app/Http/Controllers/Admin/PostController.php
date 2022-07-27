@@ -61,6 +61,7 @@ class PostController extends Controller
 
     public function update($post, PostRequest $request)
     {
+
         $post = Post::find($post);
         $imagePath = request('image')->store('uploads', 'public');
         $optimizerChain = OptimizerChainFactory::create();
@@ -87,8 +88,8 @@ class PostController extends Controller
         $optimizerChain->optimize('storage/'.$imagePath);
 
         //ImageOptimizer::optimize('storage/'.$imagePath);
-
         $data = array(
+         'admin_id' => auth()->user()->id,
          'title' => $request['title'],
          'author' => $request['author'],
          'source' => $request['source'],
