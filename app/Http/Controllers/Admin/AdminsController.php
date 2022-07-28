@@ -43,7 +43,7 @@ class AdminsController extends Controller
           'name' => ['required','max:100'],
           'surname' => ['required','max:100'],
           'password' => ['max:100'],
-          'error_notification' => ['required'],
+          'global_privileges' => ['required'],
           'email' => ['required','max:100']
       ]);
       if ($request['password'] == null) {
@@ -51,7 +51,7 @@ class AdminsController extends Controller
       'login' => $request['login'],
       'name' => $request['name'],
       'surname' => $request['surname'],
-      'error_notification' => $request['error_notification'],
+      'global_privileges' => $request['global_privileges'],
       'email' => $request['email']
     );
       } else {
@@ -59,7 +59,7 @@ class AdminsController extends Controller
       'login' => $request['login'],
       'name' => $request['name'],
       'surname' => $request['surname'],
-      'error_notification' => $request['error_notification'],
+      'global_privileges' => $request['global_privileges'],
       'password' => Hash::make($request['password']),
       'email' => $request['email']
     );
@@ -77,14 +77,14 @@ class AdminsController extends Controller
           'name' => ['required','max:100'],
           'surname' => ['required','max:100'],
           'password' => ['max:100'],
-          'error_notification' => ['required'],
+          'global_privileges' => ['required'],
           'email' => ['required','max:100']
       ]);
       $data = array(
   'login' => $request['login'],
   'name' => $request['name'],
   'surname' => $request['surname'],
-  'error_notification' => $request['error_notification'],
+  'global_privileges' => $request['global_privileges'],
   'password' => Hash::make($request['password']),
   'email' => $request['email'],
   'token' => Str::random(60)

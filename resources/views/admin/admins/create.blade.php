@@ -44,12 +44,12 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="error_notification" class="control-label">Super Admin? (Admin ze wszystkimi przywilejami)</label>
-                  <select name="error_notification" id="error_notification" class="custom-select">
+                  <label for="global_privileges" class="control-label">Super Admin? (Admin ze wszystkimi przywilejami)</label>
+                  <select name="global_privileges" id="global_privileges" class="custom-select">
                     <option value="1">Tak</option>
                     <option value="0">Nie</option>
                   </select>
-                  @error('error_notification')
+                  @error('global_privileges')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
