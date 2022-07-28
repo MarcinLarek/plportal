@@ -8,7 +8,7 @@
     </div>
     @endif
     <div class="pt-4 ">
-      <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a>
+      <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a><a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a>
     </div>
     <form id="search" action="{{ route('admin.post.update', ['post' => $post->id]) }}" enctype="multipart/form-data" method="post">
         @csrf
