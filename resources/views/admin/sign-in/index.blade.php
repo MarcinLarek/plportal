@@ -1,5 +1,19 @@
 @extends('layouts.app')
 @section('content')
+<script>
+            function toggePassword() {
+                var upass = document.getElementById('upass');
+                var toggleBtn = document.getElementById('toggleBtn');
+                if (upass.type == "password") {
+                    upass.type = "text";
+                    toggleBtn.value = "Ukryj Hasło";
+                } else {
+                    upass.type = "Password";
+                    toggleBtn.value = "Pokaż Hasło";
+                }
+            }
+
+        </script>
 <h1 class="mt-md-4">Logowanie</h1>
 <hr />
 @if($notification==1)
@@ -31,10 +45,13 @@
             <div class="row align-items-center justify-content-center">
               <div class="form-group col-md-6">
                 <label for="password" class="control-label">Hasło</label>
-                <input name="password" id="password" class="form-control" type="password" placeholder="Hasło" value="{{ old('password') }}" />
+                <input name="password" id="upass" class="form-control" type="password" placeholder="Hasło" value="{{ old('password') }}" />
                 @error('password')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
+              </div>
+              <div class="d-flex align-items-center justify-content-center">
+                <input type ="button"id="toggleBtn"value="Pokaż hasło"class="mt-2 w-25 btn btn-outline-secondary btn-sm"onclick="toggePassword()">
               </div>
             </div>
           </fieldset>
