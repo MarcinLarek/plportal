@@ -45,8 +45,8 @@
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="error_notification" class="control-label">Super Admin</label>
-                  <select name="error_notification" id="error_notification" class="custom-select">
+                  <label for="global_privileges" class="control-label">Super Admin</label>
+                  <select name="global_privileges" id="global_privileges" class="custom-select">
                     @if($admin->global_privileges == 1)
                     <option value="1">Tak</option>
                     <option value="0">Nie</option>
@@ -55,7 +55,7 @@
                     <option value="1">Tak</option>
                     @endif
                   </select>
-                  @error('error_notification')
+                  @error('global_privileges')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
