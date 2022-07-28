@@ -1,6 +1,20 @@
 @extends('layouts.app')
 @section('content')
 @if(auth()->user()->global_privileges==1)
+<script>
+            function toggePassword() {
+                var upass = document.getElementById('upass');
+                var toggleBtn = document.getElementById('toggleBtn');
+                if (upass.type == "password") {
+                    upass.type = "text";
+                    toggleBtn.value = "Ukryj Hasło";
+                } else {
+                    upass.type = "Password";
+                    toggleBtn.value = "Pokaż Hasło";
+                }
+            }
+
+        </script>
 <div class="container">
   <h1 class="mt-md-4">Wprowadź dane administratora</h1>
   <hr />
@@ -57,7 +71,7 @@
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="password" class="control-label">Hasło</label>
-                  <input name="password" id="password" type="password" class="form-control" placeholder="Hasło" value="{{ old('password') }}" />
+                  <input name="password" id="upass" type="password" class="form-control" placeholder="Hasło" value="{{ old('password') }}" />
                   @error('password')
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
@@ -69,6 +83,7 @@
                   <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
+                <input type ="button"id="toggleBtn"value="Pokaż hasło"class="mt-2 w-25 btn btn-outline-secondary btn-sm"onclick="toggePassword()">
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
