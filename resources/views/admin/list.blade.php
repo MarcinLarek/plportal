@@ -9,7 +9,7 @@
     <h1>Zmiany zostały zapisane</h1>
   </div>
   @endif
-    <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a> <a href="{{ route('admin.post.create', ['section' => $permissioncheck->section]) }}" class="text-primary" >Dodaj post</a>
+    <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a> <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a> <a href="{{ route('admin.post.create', ['section' => $permissioncheck->section]) }}" class="text-primary" >Dodaj post</a>
   <div class="table-responsive">
     <table class="table table-striped">
       <thead>

@@ -5,7 +5,7 @@
   <h1 class="mt-md-4">Edytuj dane administratora</h1>
   <hr />
   <div class="pb-1">
-    <a href="{{route('admin.admins')}}" class="text-primary"> <u>Powrót</u> </a>
+    <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a> <a href="{{route('admin.admins')}}" class="text-primary"> <u>Powrót</u> </a>
   </div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
