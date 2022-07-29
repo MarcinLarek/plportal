@@ -2,6 +2,9 @@
 @section('mainpage')
 <div class="row">
     <div class="col-xl-9 col-l-9 col-md-12 col-sm-12 ">
+      <div class="row">
+        {{$post->created_at}} {{$admin->name}} {{substr($admin->surname, 0, 1)}}
+      </div>
         <div class="d-flex justify-content-center">
             <h1> <b>{{$post->title}}</b> </h1>
         </div>
