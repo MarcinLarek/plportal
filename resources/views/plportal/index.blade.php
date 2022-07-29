@@ -159,8 +159,11 @@
 @endif
 
 <div class="row pt-4">
-  @foreach($posts as $listpost)
-    @continue($loop->iteration < 4) @break($loop->iteration == 9)
+  @if(count($fakty)>0)
+  <h5> <b>Fakty</b> </h5>
+  <hr>
+  @endif
+  @foreach($fakty as $listpost)
     <div class="col">
       <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
       <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
@@ -175,8 +178,11 @@
 </div>
 
 <div class="row pt-4">
-  @foreach($posts as $listpost)
-    @continue($loop->iteration < 9) @break($loop->iteration == 13)
+  @if(count($biznes)>0)
+  <h5> <b>Biznes</b> </h5>
+  <hr>
+  @endif
+  @foreach($biznes as $listpost)
     <div class="col">
       <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
       <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
@@ -191,8 +197,11 @@
 </div>
 
 <div class="row pt-4">
-  @foreach($posts as $listpost)
-    @continue($loop->iteration < 13) @break($loop->iteration == 18)
+  @if(count($sport)>0)
+  <h5> <b>Sport</b> </h5>
+  <hr>
+  @endif
+  @foreach($sport as $listpost)
     <div class="col">
       <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
       <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
@@ -207,8 +216,11 @@
 </div>
 
 <div class="row pt-4">
-  @foreach($posts as $listpost)
-    @continue($loop->iteration < 18) @break($loop->iteration == 23)
+  @if(count($salonpolityczny)>0)
+  <h5> <b>Salon Polityczny</b> </h5>
+  <hr>
+  @endif
+  @foreach($salonpolityczny as $listpost)
     <div class="col">
       <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
       <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
@@ -223,8 +235,11 @@
 </div>
 
 <div class="row pt-4">
-  @foreach($posts as $listpost)
-    @continue($loop->iteration < 23)
+  @if(count($kfd)>0)
+  <h5> <b>Kobieta, Facet, Dziecko</b> </h5>
+  <hr>
+  @endif
+  @foreach($kfd as $listpost)
     <div class="col">
       <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
       <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
@@ -238,6 +253,157 @@
   @endforeach
 </div>
 
+<div class="row pt-4">
+  @if(count($hobby)>0)
+  <h5> <b>Hobby</b> </h5>
+  <hr>
+  @endif
+  @foreach($hobby as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($kultura)>0)
+  <h5> <b>Kultura</b> </h5>
+  <hr>
+  @endif
+  @foreach($kultura as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($motoryzacja)>0)
+  <h5> <b>Motoryzacja</b> </h5>
+  <hr>
+  @endif
+  @foreach($motoryzacja as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($naukaitechnologie)>0)
+  <h5> <b>Nauka i Technologie</b> </h5>
+  <hr>
+  @endif
+  @foreach($naukaitechnologie as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($historia)>0)
+  <h5> <b>Historia</b> </h5>
+  <hr>
+  @endif
+  @foreach($historia as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($slubzbymundurowe)>0)
+  <h5> <b>Służby Mundurowe</b> </h5>
+  <hr>
+  @endif
+  @foreach($slubzbymundurowe as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($turystyka)>0)
+  <h5> <b>Turystyka</b> </h5>
+  <hr>
+  @endif
+  @foreach($turystyka as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
+
+<div class="row pt-4">
+  @if(count($spoleczenstwo)>0)
+  <h5> <b>Społeczeństwo</b> </h5>
+  <hr>
+  @endif
+  @foreach($spoleczenstwo as $listpost)
+    <div class="col">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        <div class="pt-1 pb-1 ps-2 pe-2" style="background: #e63b02;">
+          {{ $listpost->getmaincategory()->category }}
+        </div>
+      </div>
+      <b>{{$listpost->title}}</b>
+      </a>
+    </div>
+  @endforeach
+</div>
 
 <div class="row pt-5">
   <div class="col-4 bottomleft d-flex flex-column justify-content-center">
