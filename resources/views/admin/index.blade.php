@@ -36,7 +36,7 @@
       <div class="col-12">
         <hr>
       </div>
-      <h1>Zarządzanie administratorami</h1>
+      <h1>Strefa Super Admina</h1>
       <div class="col-12">
         <hr>
       </div>
@@ -47,6 +47,15 @@
               <div class="card-body mt-5 mb-5">
                   <a class="stretched-link" href="{{ route('admin.admins') }}">
                       <h2>Administratorzy</h2>
+                  </a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-3">
+          <div href="#" class="card text-center shadow">
+              <div class="card-body mt-5 mb-5">
+                  <a class="stretched-link" href="{{ route('admin.category.selectsection') }}">
+                      <h2>Kategorie</h2>
                   </a>
               </div>
           </div>

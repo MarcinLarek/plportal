@@ -22,6 +22,11 @@ class Section extends Model
        return $this->hasMany(Post::class);
     }
 
+    public function getcategories() {
+      $categorylist = Category::where('section_id',$this->id)->get();
+       return $categorylist;
+    }
+
     public function getposts() {
       $categorylist = Category::where('section_id',$this->id)->get();
       $filteredcategories = PostCategories::take(0)->get();

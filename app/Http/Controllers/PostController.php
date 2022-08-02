@@ -16,14 +16,17 @@ class PostController extends Controller
 
   public function index(Section $section)
   {
+    if ($section->id == 9) {
+      return $this->naukaitechnologie($section);
+    }
 
-      $posts = $section->getposts();
+      $posts = $section->getposts()->sortDesc();
 
       $categorylist = Category::where('section_id',$section->id)
                                ->where('parent_category_id',null)
                                ->get();
-      $firstpost = $posts->first();
-      $posts = $posts->slice(1)->take(28);
+      $firstpost = $posts->sortDesc()->first();
+      $posts = $posts->sortDesc()->slice(1)->take(28);
       $sections = Section::get();
       $navbarsection = $section->section;
       return view($section->section.'.index')
@@ -36,6 +39,7 @@ class PostController extends Controller
 
   public function show(Section $section, Post $post)
   {
+
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $post->reads++;
@@ -45,7 +49,6 @@ class PostController extends Controller
                              ->get();
     $sections = Section::get();
     $admin = Admin::where('id',$post->admin_id)->first();
-
     return view($section->section.'.show')
     ->with('post', $post)
     ->with('posts', $posts)
@@ -58,24 +61,7 @@ class PostController extends Controller
 
   public function category(Section $section, Category $category)
   {
-    $categorylist = PostCategories::where('category_id', $category->id)->get();
-    foreach ($categorylist as $cat) {
-      $cat->getparentcategory();
-
-      if($cat != null) {
-        $categorylist->push($cat);
-      }
-
-    }
-
-
-    $main = Post::take(0)->get();
-    foreach ($categorylist as $catli ) {
-      $temp1 = Post::where('id',$catli->post_id)->get();
-      foreach ($temp1 as $tempp1) {
-        $main->push($tempp1);
-      }
-    }
+    $main = $category->getposts()->sortDesc();
 
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
@@ -116,6 +102,27 @@ class PostController extends Controller
     ->with('section', $section->section)
     ->with('sections', $sections)
     ->with('categories', $categorylist);
+  }
+
+  public function naukaitechnologie(Section $section)
+  {
+    $posts = $section->getposts();
+    $posts = $posts->sortDesc()->take(28);
+    $nauka = Category::where('section_id',$section->id)
+                             ->where('category','Nauka')
+                             ->first();
+
+    $categorylist = Category::where('section_id',$section->id)
+                             ->where('parent_category_id',null)
+                             ->get();
+    $sections = Section::get();
+    $navbarsection = $section->section;
+    return view($section->section.'.index')
+     ->with('posts', $posts)
+     ->with('nauka', $nauka)
+     ->with('categories', $categorylist)
+     ->with('section', $navbarsection)
+     ->with('sections', $sections);
   }
 
 }
