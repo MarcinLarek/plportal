@@ -19,7 +19,9 @@ class PostController extends Controller
 
       $posts = $section->getposts();
 
-      $categorylist = Category::where('section_id',$section->id)->get();
+      $categorylist = Category::where('section_id',$section->id)
+                               ->where('parent_category_id',null)
+                               ->get();
       $firstpost = $posts->first();
       $posts = $posts->slice(1)->take(28);
       $sections = Section::get();
@@ -38,7 +40,9 @@ class PostController extends Controller
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $post->reads++;
     $post->update();
-    $categorylist = Category::where('section_id',$section->id)->get();
+    $categorylist = Category::where('section_id',$section->id)
+                             ->where('parent_category_id',null)
+                             ->get();
     $sections = Section::get();
     $admin = Admin::where('id',$post->admin_id)->first();
 
@@ -54,8 +58,17 @@ class PostController extends Controller
 
   public function category(Section $section, Category $category)
   {
-
     $categorylist = PostCategories::where('category_id', $category->id)->get();
+    foreach ($categorylist as $cat) {
+      $cat->getparentcategory();
+
+      if($cat != null) {
+        $categorylist->push($cat);
+      }
+
+    }
+
+
     $main = Post::take(0)->get();
     foreach ($categorylist as $catli ) {
       $temp1 = Post::where('id',$catli->post_id)->get();
@@ -66,7 +79,9 @@ class PostController extends Controller
 
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
-    $categorylist = Category::where('section_id',$section->id)->get();
+    $categorylist = Category::where('section_id',$section->id)
+                             ->where('parent_category_id',null)
+                             ->get();
     $sections = Section::get();
 
     return view($section->section.'.category')
@@ -89,7 +104,9 @@ class PostController extends Controller
 
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
-    $categorylist = Category::where('section_id',$section->id)->get();
+    $categorylist = Category::where('section_id',$section->id)
+                             ->where('parent_category_id',null)
+                             ->get();
     $sections = Section::get();
 
     return view($section->section.'.category')
