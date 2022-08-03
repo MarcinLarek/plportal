@@ -107,11 +107,32 @@ class PostController extends Controller
   public function naukaitechnologie(Section $section)
   {
     $posts = $section->getposts();
-    $posts = $posts->sortDesc()->take(28);
+    $posts = $posts->sortDesc()->take(3);
     $nauka = Category::where('section_id',$section->id)
-                             ->where('category','Nauka')
+                             ->where('id','56')
                              ->first();
-
+    $naukiscisle = Category::where('section_id',$section->id)
+                             ->where('id','58')
+                             ->first();
+    $technologie = Category::where('section_id',$section->id)
+                             ->where('id','57')
+                             ->first();
+    $technikawosjkowa = Category::where('section_id',$section->id)
+                            ->where('id','55')
+                            ->first();
+    $innowtechwgosp = Category::where('section_id',$section->id)
+                              ->where('id','53')
+                              ->first();
+    $innowtechwgosp = $innowtechwgosp->getposts()->take(3);
+    $medycyna = Category::where('section_id',$section->id)
+                              ->where('id','60')
+                              ->first();
+    $gry = Category::where('section_id',$section->id)
+                              ->where('id','59')
+                              ->first();
+    $ochronasrodowiska = Category::where('section_id',$section->id)
+                              ->where('id','61')
+                              ->first();
     $categorylist = Category::where('section_id',$section->id)
                              ->where('parent_category_id',null)
                              ->get();
@@ -120,6 +141,13 @@ class PostController extends Controller
     return view($section->section.'.index')
      ->with('posts', $posts)
      ->with('nauka', $nauka)
+     ->with('naukiscisle', $naukiscisle)
+     ->with('technologie', $technologie)
+     ->with('technikawosjkowa', $technikawosjkowa)
+     ->with('innowtechwgosp', $innowtechwgosp)
+     ->with('medycyna', $medycyna)
+     ->with('gry', $gry)
+     ->with('ochronasrodowiska', $ochronasrodowiska)
      ->with('categories', $categorylist)
      ->with('section', $navbarsection)
      ->with('sections', $sections);

@@ -28,7 +28,7 @@
                   <select size="24" class="form-select col-12" name="parent_category_id" id="parent_category_id">
                     <option value="">Brak</option>
                     @foreach($category as $cat)
-                      @if($cat->getparentcategory() != null)
+                      @if($cat->getparentcategory() == null)
                         <option value="{{$cat->id}}">
                           {{$cat->category }}
                         </option>

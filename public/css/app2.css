@@ -112,7 +112,7 @@ a:hover {
 
 .bordercolumns {
   overflow: hidden;
-  height: 600px;
+  height: 460px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -133,11 +133,10 @@ a:hover {
 
 .minicolumns {
   overflow: hidden;
-  height: 100px;
+  height: 200px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  font-size: 12px;
 }
 
 .fiveobjectlist {

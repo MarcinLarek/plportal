@@ -178,7 +178,7 @@
                           <option value="{{$cat->id}}">
                             {{$cat->category }}
                             @if($cat->getparentcategory() != null)
-                             (podkategoria kategorii {{$cat->getparentcategory()->category}})
+                             --- (podkategoria kategorii {{$cat->getparentcategory()->category}})
                             @endif
                           </option>
                       @endforeach
