@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain(config('app.name'))->group(function () {
   Route::middleware('auth:admin')->group(function () {
+      Route::post('/images', [App\Http\Controllers\ImageController::class, 'store'])->name('images.store');
+
         Route::prefix('/admin/admins')->group(function () {
             Route::get('/', [\App\Http\Controllers\Admin\AdminsController::class, 'adminslist'])->name('admin.admins');
             Route::get('/create', [\App\Http\Controllers\Admin\AdminsController::class, 'create'])->name('admin.admins.create');
@@ -29,8 +31,17 @@ Route::domain(config('app.name'))->group(function () {
 
         });
 
+        Route::prefix('/admin/category')->group(function () {
+            Route::get('/selectsection', [\App\Http\Controllers\Admin\CategoryController::class, 'selectsection'])->name('admin.category.selectsection');
+            Route::get('/{section}/createcategory', [\App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.category.create');
+            Route::post('/store', [\App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('admin.category.store');
+
+
+        });
+
         Route::get('/admin', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.index');
         Route::get('/admin/create/{section}', [App\Http\Controllers\Admin\PostController::class, 'create'])->name('admin.post.create');
+        Route::get('/addsubcategory', [\App\Http\Controllers\Admin\PostController::class, 'addsubcategory'])->name('admin.addsubcategory');
         Route::get('/admin/edit/{post}', [App\Http\Controllers\Admin\PostController::class, 'edit'])->name('admin.post.edit');
         Route::get('/admin/list/{section}', [App\Http\Controllers\Admin\PostController::class, 'list'])->name('admin.post.list');
         Route::post('/admin/store', [App\Http\Controllers\Admin\PostController::class, 'store'])->name('admin.post.store');
@@ -54,8 +65,5 @@ Route::domain(config('app.name'))->group(function () {
   Route::get('/{section}/Kategorie/{category}', [App\Http\Controllers\PostController::class, 'category'])->name('post.category');
   Route::post('/{section}/wyszukaj/', [App\Http\Controllers\PostController::class, 'serach'])->name('post.serach');
 });
-
-
-Route::post('/images', [App\Http\Controllers\ImageController::class, 'store'])->name('images.store');
 
 Auth::routes();

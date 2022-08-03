@@ -171,11 +171,16 @@
 
 
             <div class="row pt-4">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <label for="category" class="control-label">Zaznacz kategorie</label>
                     <select size="24" class="form-select col-12" multiple="multiple" name="category[]" id="category">
                       @foreach($category as $cat)
-                          <option value="{{$cat->id}}">{{$cat->category}}</option>
+                          <option value="{{$cat->id}}">
+                            {{$cat->category }}
+                            @if($cat->getparentcategory() != null)
+                             --- (podkategoria kategorii {{$cat->getparentcategory()->category}})
+                            @endif
+                          </option>
                       @endforeach
                     </select>
                     @error('category')

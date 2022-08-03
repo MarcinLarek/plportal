@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if(auth()->user()->global_privileges==1)
+@if(auth()->user()->global_privileges==1 || auth()->user()->ifmenages($permissioncheck->id))
 <hr />
 <div class="container">
 <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a>

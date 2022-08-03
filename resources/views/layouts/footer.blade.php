@@ -18,7 +18,7 @@
           Kontakt: <a class="text-primary" href="mailto:redakcja@plportal.pl?subject=feedback">redakcja@plportal.pl</a>
         </div>
         <div class="col-4 pt-4">
-          Developed by <a class="text-primary" href="https://fundacjaglosmlodych.org/">Fundacja na Rzecz Promocji i Rozwoju „Głos Młodych”</a>
+          Developed by <a class="text-primary" href="https://fundacjaglosmlodych.org/">Fundacja na Rzecz Promocji i Rozwoju „Głos Młodych”</a>  and Marcin Larek
         </div>
     </div>
     <div class="row" align="center">

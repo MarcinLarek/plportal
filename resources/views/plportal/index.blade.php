@@ -2,7 +2,7 @@
 @section('mainpage')
 <div class="row ads">
   <div class="col w-100 text-center">
-  REKLAMA
+  <!-- REKLAMA -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476273745604280"
      crossorigin="anonymous"></script>
 <ins class="adsbygoogle"
@@ -61,17 +61,23 @@
     </div>
     <div class="col-xl-4 col-l-4 col-md-12 col-sm-12 col-12">
         @foreach ($posts as $post)
-        @continue($loop->iteration < 5) @break($loop->iteration == 9)
-            <div class="row pt-1">
-                <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
-                    <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 rightlistphoto"></a>
-                </div>
-                <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-12 rightlisttext">
-                    <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><b>{{$post->title}}</b></a>
-                    <p>{{strip_tags(substr($post->postcontent, 0, 100))}}...</p>
-                </div>
+        @continue($loop->iteration < 16) @break($loop->iteration == 23)
+        @if($loop->iteration == 16)
+        <div class="row pt-1">
+            <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
+                <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 rightlistphoto"></a>
             </div>
-            @endforeach
+            <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-12 rightlisttext">
+                <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><b>{{$post->title}}</b></a>
+                <p>{{strip_tags(substr($post->postcontent, 0, 100))}}...</p>
+            </div>
+        </div>
+        @else
+        <div class="row pt-1">
+          <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">• {{$post->title}}</a>
+        </div>
+        @endif
+        @endforeach
     </div>
 </div>
 @endif
@@ -110,49 +116,67 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
-        @foreach($posts as $minipost)
-          @continue($loop->iteration < 7) @break($loop->iteration == 18)
-            @if($loop->iteration % 2 == 0)
-            <div class="row">
-              <div class="col-5">
-                <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost->image }}')">
-                  <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"></a>
-                </div>
-              </div>
-              <div class="col-7 minicolumns">
-                <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
-              </div>
-            </div>
-            @endif
-        @endforeach
-      </div>
-      <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
-        @foreach($posts as $minipost2)
-          @continue($loop->iteration < 7) @break($loop->iteration == 17)
-            @if($loop->iteration % 2 != 0)
-            <div class="row">
-              <div class="col-5">
-                <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost2->image }}')">
-                  <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost2, 'section' => $minipost2->getsection()]) }}"></a>
-                </div>
-              </div>
-              <div class="col-7 minicolumns">
-                <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost2, 'section' => $minipost2->getsection()]) }}"><b>{{$minipost2->title}}</b></a>
-              </div>
-            </div>
-            @endif
-        @endforeach
-      </div>
-    </div>
-
   </div>
 
   <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$posts[5]->image}}')">
     <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[5], 'section' => $posts[5]->getsection()]) }}">
     <h1> <b>{{$posts[5]->title}}</b> </h1>
     </a>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
+      @foreach($posts as $minipost)
+        @continue($loop->iteration < 7) @break($loop->iteration == 13)
+          @if($loop->iteration % 2 == 0)
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost->image }}')">
+                <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"></a>
+              </div>
+            </div>
+            <div class="col-6 minicolumns">
+              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
+              <p>
+                {{strip_tags(substr($minipost->postcontent, 0, 50))}}...
+              </p>
+            </div>
+          </div>
+          @endif
+      @endforeach
+    </div>
+    <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
+      @foreach($posts as $minipost2)
+        @continue($loop->iteration < 7) @break($loop->iteration == 12)
+          @if($loop->iteration % 2 != 0)
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost2->image }}')">
+                <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost2, 'section' => $minipost2->getsection()]) }}"></a>
+              </div>
+            </div>
+            <div class="col-6 minicolumns">
+              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost2, 'section' => $minipost2->getsection()]) }}"><b>{{$minipost2->title}}</b></a>
+            </div>
+          </div>
+          @endif
+      @endforeach
+    </div>
+    <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
+      @foreach($posts as $minipost)
+        @continue($loop->iteration < 13) @break($loop->iteration == 16)
+          <div class="row">
+            <div class="col-6">
+              <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost->image }}')">
+                <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"></a>
+              </div>
+            </div>
+            <div class="col-6 minicolumns">
+              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
+            </div>
+          </div>
+      @endforeach
+    </div>
   </div>
 
 </div>
@@ -429,7 +453,7 @@
 
 <div class="row  ads pt-3 pb-4">
   <div class="col w-100 text-center">
-  REKLAMA
+  <!-- REKLAMA -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476273745604280"
      crossorigin="anonymous"></script>
 <ins class="adsbygoogle"
