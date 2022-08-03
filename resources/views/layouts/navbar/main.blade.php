@@ -14,9 +14,11 @@
                           </a>
 
                           @foreach($section->category as $category)
+                          @if($category->parent_category_id == null)
                           <a class="dropdown-item" href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">
                               {{$category->category}}
                           </a>
+                          @endif
                           @endforeach
                       </div>
                   </div>

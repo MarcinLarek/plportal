@@ -24,6 +24,13 @@
       </div>
     </div>
   @endforeach
+  <div class="text-center mt-4">
+    <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
+      @csrf
+      <input type="hidden" name="serach" value="">
+      <input type="submit" class="btn btn-primary" value="Więcej">
+    </form>
+  </div>
 </div>
 
 <div class="row pt-2"><!--Nine posts -->
