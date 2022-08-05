@@ -37,25 +37,25 @@
 <h3> <b>NAUKA</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$nauka->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTUpreg_replace('/\s+/', '', $nauka->category)" role="tablist">
     @foreach($nauka->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$nauka->category}}Content">
+  <div class="tab-content" id="TUTUpreg_replace('/\s+/', '', $nauka->category)Content">
     @foreach($nauka->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(9); ?>
         <div class="row">
@@ -113,25 +113,25 @@
 <h3> <b>NAUKI ŚCISŁE</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$naukiscisle->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $naukiscisle->category)}}" role="tablist">
     @foreach($naukiscisle->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$naukiscisle->category}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $naukiscisle->category)}}Content">
     @foreach($naukiscisle->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(3); ?>
         <div class="row">
@@ -166,25 +166,25 @@
 <h3> <b>TECHNOLOGIE</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$technologie->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $technologie->category)}}" role="tablist">
     @foreach($technologie->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$technologie->category}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $technologie->category)}}Content">
     @foreach($technologie->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(9); ?>
         <div class="row">
@@ -242,25 +242,25 @@
 <h3> <b>TECHNIKA WOJSKOWA</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$technikawosjkowa->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $technikawosjkowa->category)}}" role="tablist">
     @foreach($technikawosjkowa->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$technikawosjkowa->category}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $technikawosjkowa->category)}}Content">
     @foreach($technikawosjkowa->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(3); ?>
         <div class="row">
@@ -321,25 +321,25 @@
 <h3> <b>MEDYCYNA</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$medycyna->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $medycyna->category)}}" role="tablist">
     @foreach($medycyna->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$medycyna->category}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $medycyna->category)}}Content">
     @foreach($medycyna->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(9); ?>
         <div class="row">
@@ -397,25 +397,25 @@
 <h3> <b>GRY</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$gry->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $gry->category)}}" role="tablist">
     @foreach($gry->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$gry->category}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $gry->category)}}Content">
     @foreach($gry->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(3); ?>
         <div class="row">
@@ -450,25 +450,25 @@
 <h3> <b>OCHRONA ŚRODOWISKA</b> </h3>
 <hr>
 <div class="row">
-  <ul class="nav nav-tabs" id="TUTU{{$ochronasrodowiska->category}}" role="tablist">
+  <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $ochronasrodowiska->category)}}" role="tablist">
     @foreach($ochronasrodowiska->getsubcategories() as $sub)
     @if($loop->iteration == 1)
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link active" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      <button class="text-dark nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @else
     <li class="nav-item" role="presentation">
-      <button class="text-dark nav-link" id="home-tab{{$sub->category}}" data-bs-toggle="tab" data-bs-target="#home{{$sub->category}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      <button class="text-dark nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{preg_replace('/\s+/', '', $sub->category)}}</button>
     </li>
     @endif
     @endforeach
   </ul>
-  <div class="tab-content" id="TUTU{{$ochronasrodowiska->category}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $ochronasrodowiska->category)}}Content">
     @foreach($ochronasrodowiska->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @else
-      <div class="tab-pane fade" id="home{{$sub->category}}" role="tabpanel" aria-labelledby="home-tab{{$sub->category}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(9); ?>
         <div class="row">
