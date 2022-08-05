@@ -32,10 +32,12 @@
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
+                    @if(isset($firstpost))
                     <img src="/storage/{{ $firstpost->image }}" class="carouselphoto" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <a href="{{ route('post.show', ['post' => $firstpost, 'section' => $firstpost->getsection()]) }}"><h5>{{$firstpost->title}}</h5></a>
                     </div>
+                    @endif
                 </div>
 
                 @foreach ($posts as $post)
@@ -78,9 +80,11 @@
 
 
 <div class="row pt-3">
+  @if(isset($firstpost))
   <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$firstpost->image}}')">
     <a href="{{ route('post.show', ['post' => $firstpost, 'section' => $firstpost->getsection()]) }}"><h1> <b>{{$firstpost->title}}</b> </h1></a>
   </div>
+  @endif
   <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
     <div class="row">
       <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
