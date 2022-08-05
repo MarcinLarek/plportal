@@ -180,3 +180,18 @@ a:hover {
   background-size: cover;
   background-position: center;
 }
+.carousel-indicators {
+  bottom: 35px;
+}
+.carousel-indicators img{
+  margin-top: -10px;
+  height: 70px;
+  width: 100px;
+}
+.carousel-indicators button{
+
+  width: 100px !important;
+}
+.carousel-caption > a > h5{
+  margin-top: -100px;
+}

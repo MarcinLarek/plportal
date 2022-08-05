@@ -28,7 +28,7 @@
     <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
       @csrf
       <input type="hidden" name="serach" value="">
-      <input type="submit" class="btn btn-primary" value="Więcej">
+      <input type="submit" class="btn btn-primary" value="WIĘCEJ">
     </form>
   </div>
 </div>
@@ -107,6 +107,11 @@
       </div>
     @endforeach
   </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $nauka, 'section' => $nauka->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
+  </div>
 </div>
 
 <div class="row pt-2"><!--Three posts -->
@@ -159,6 +164,11 @@
         </div>
       </div>
     @endforeach
+  </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $naukiscisle, 'section' => $naukiscisle->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
   </div>
 </div>
 
@@ -236,6 +246,11 @@
       </div>
     @endforeach
   </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $technologie, 'section' => $technologie->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
+  </div>
 </div>
 
 <div class="row pt-2"><!--Three posts -->
@@ -288,6 +303,11 @@
         </div>
       </div>
     @endforeach
+  </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $technikawosjkowa, 'section' => $technikawosjkowa->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
   </div>
 </div>
 
@@ -391,6 +411,11 @@
       </div>
     @endforeach
   </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $medycyna, 'section' => $medycyna->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
+  </div>
 </div>
 
 <div class="row pt-2"><!--Three posts -->
@@ -443,6 +468,11 @@
         </div>
       </div>
     @endforeach
+  </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $gry, 'section' => $gry->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
   </div>
 </div>
 
@@ -519,6 +549,11 @@
         </div>
       </div>
     @endforeach
+  </div>
+  <div class="row text-center mt-4 mb-4">
+    <a href="{{ route('post.category', ['category' => $ochronasrodowiska, 'section' => $ochronasrodowiska->getsection()]) }}">
+      <button type="button" class="btn btn-primary">WIĘCEJ</button>
+    </a>
   </div>
 </div>
 

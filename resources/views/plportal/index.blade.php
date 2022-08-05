@@ -22,20 +22,15 @@
 <div class="row">
     <div class="col-xl-8 col-l-8 col-md-12 col-sm-12 ">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            </div>
             <div class="carousel-inner">
 
                 <div class="carousel-item active">
+                  @if(isset($firstpost))
                     <img src="/storage/{{ $firstpost->image }}" class="carouselphoto" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                       <a href="{{ route('post.show', ['post' => $firstpost, 'section' => $firstpost->getsection()]) }}"><h5>{{$firstpost->title}}</h5></a>
                     </div>
+                    @endif
                 </div>
 
                 @foreach ($posts as $post)
@@ -57,12 +52,40 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
+
+            <div class="carousel-indicators">
+                @if(isset($firstpost))
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+                  <img src="/storage/{{$firstpost->image}}" class="d-block w-100 img-fluid" alt="">
+                </button>
+                @endif
+                @if(isset($posts[0]))
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2">
+                  <img src="/storage/{{$posts[0]->image}}" class="d-block w-100 img-fluid" alt="">
+                </button>
+                @endif
+                @if(isset($posts[1]))
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3">
+                  <img src="/storage/{{$posts[1]->image}}" class="d-block w-100 img-fluid" alt="">
+                </button>
+                @endif
+                @if(isset($posts[2]))
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4">
+                  <img src="/storage/{{$posts[2]->image}}" class="d-block w-100 img-fluid" alt="">
+                </button>
+                @endif
+                @if(isset($posts[3]))
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5">
+                  <img src="/storage/{{$posts[3]->image}}" class="d-block w-100 img-fluid" alt="">
+                </button>
+                @endif
+            </div>
         </div>
     </div>
     <div class="col-xl-4 col-l-4 col-md-12 col-sm-12 col-12">
         @foreach ($posts as $post)
         @continue($loop->iteration < 16) @break($loop->iteration == 23)
-        @if($loop->iteration == 16)
+        @if($loop->iteration < 18)
         <div class="row pt-1">
             <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
                 <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 rightlistphoto"></a>
@@ -83,9 +106,11 @@
 
 
 <div class="row pt-3">
+  @if(isset($firstpost))
   <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$firstpost->image}}')">
     <a href="{{ route('post.show', ['post' => $firstpost, 'section' => $firstpost->getsection()]) }}"><h1> <b>{{$firstpost->title}}</b> </h1></a>
   </div>
+  @endif
   <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
     <div class="row">
       <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
@@ -144,7 +169,7 @@
             <div class="col-6 minicolumns">
               <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
               <p>
-                {{strip_tags(substr($minipost->postcontent, 0, 50))}}...
+                {{strip_tags(substr($minipost->postcontent, 0, 100))}}...
               </p>
             </div>
           </div>
@@ -164,6 +189,12 @@
             <div class="col-6 minicolumns">
               <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost2, 'section' => $minipost2->getsection()]) }}"><b>{{$minipost2->title}}</b></a>
             </div>
+            <div class="col-6 minicolumns">
+              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
+              <p>
+                {{strip_tags(substr($minipost2->postcontent, 0, 100))}}...
+              </p>
+            </div>
           </div>
           @endif
       @endforeach
@@ -179,6 +210,12 @@
             </div>
             <div class="col-6 minicolumns">
               <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
+            </div>
+            <div class="col-6 minicolumns">
+              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
+              <p>
+                {{strip_tags(substr($minipost->postcontent, 0, 100))}}...
+              </p>
             </div>
           </div>
       @endforeach
