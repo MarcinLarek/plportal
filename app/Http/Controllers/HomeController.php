@@ -12,7 +12,7 @@ class HomeController extends Controller
      public function index()
      {
        $firstpost = Post::orderBy('id', 'DESC')->first();
-       $posts = Post::orderBy('id', 'DESC')->take(28)->get();
+       $posts = Post::orderBy('id', 'DESC')->skip(1)->take(28)->get();
        $sections = Section::get();
 
        $fakty = Section::where('section','Fakty')->first();
