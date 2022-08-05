@@ -61,8 +61,7 @@ class PostController extends Controller
 
   public function category(Section $section, Category $category)
   {
-    $main = $category->getposts()->sortDesc();
-
+    $main = $category->getposts()->sortDesc()->paginate( 10 );
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
@@ -85,7 +84,7 @@ class PostController extends Controller
     $main = Post::where('title','like', '%'.$serach.'%')
                               ->orwhere('postcontent','like', '%'.$serach.'%')
                               ->orderBy('id', 'DESC')
-                              ->get();
+                              ->get()->paginate( 10 );
     $loop = 0;
     foreach ($main as $temp) {
       if ($temp->getsection()->id != $section->id) {
@@ -93,6 +92,7 @@ class PostController extends Controller
       }
       $loop++;
     }
+
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
