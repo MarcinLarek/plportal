@@ -159,7 +159,6 @@
     <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
       @foreach($posts as $minipost)
         @continue($loop->iteration < 7) @break($loop->iteration == 13)
-          @if($loop->iteration % 2 == 0)
           <div class="row">
             <div class="col-6">
               <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost->image }}')">
@@ -173,13 +172,11 @@
               </p>
             </div>
           </div>
-          @endif
       @endforeach
     </div>
     <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
       @foreach($posts as $minipost2)
-        @continue($loop->iteration < 7) @break($loop->iteration == 12)
-          @if($loop->iteration % 2 != 0)
+        @continue($loop->iteration < 13) @break($loop->iteration == 19)
           <div class="row">
             <div class="col-6">
               <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost2->image }}')">
@@ -188,28 +185,21 @@
             </div>
             <div class="col-6 minicolumns">
               <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost2, 'section' => $minipost2->getsection()]) }}"><b>{{$minipost2->title}}</b></a>
-            </div>
-            <div class="col-6 minicolumns">
-              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
               <p>
                 {{strip_tags(substr($minipost2->postcontent, 0, 100))}}...
               </p>
             </div>
           </div>
-          @endif
       @endforeach
     </div>
     <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
       @foreach($posts as $minipost)
-        @continue($loop->iteration < 13) @break($loop->iteration == 16)
+        @continue($loop->iteration < 19)
           <div class="row">
             <div class="col-6">
               <div class="mb-2 col-3 w-100 minicolumns d-flex" style="background-image: url('/storage/{{ $minipost->image }}')">
                 <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"></a>
               </div>
-            </div>
-            <div class="col-6 minicolumns">
-              <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
             </div>
             <div class="col-6 minicolumns">
               <a class="ms-2 me-2 w-100" href="{{ route('post.show', ['post' => $minipost, 'section' => $minipost->getsection()]) }}"><b>{{$minipost->title}}</b></a>
