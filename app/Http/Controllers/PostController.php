@@ -81,13 +81,18 @@ class PostController extends Controller
 
   public function serach(Section $section, Request $request)
   {
-
     $serach = $request['serach'];
     $main = Post::where('title','like', '%'.$serach.'%')
                               ->orwhere('postcontent','like', '%'.$serach.'%')
                               ->orderBy('id', 'DESC')
                               ->get();
-
+    $loop = 0;
+    foreach ($main as $temp) {
+      if ($temp->getsection()->id != $section->id) {
+        $main->forget($loop);
+      }
+      $loop++;
+    }
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)

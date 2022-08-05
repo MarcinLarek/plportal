@@ -277,11 +277,11 @@
                     </a>
                   </p>
                   <p>{{strip_tags(substr($innerpost->postcontent, 0, 100))}}</p>
-                </div>
-                <div class="row text-center text-primary">
-                  <a href="{{ route('post.show', ['post' => $innerpost, 'section' => $innerpost->getsection()]) }}">
-                  <b>Czytaj dalej</b>
-                  </a>
+                  <div class="row text-center text-primary">
+                    <a href="{{ route('post.show', ['post' => $innerpost, 'section' => $innerpost->getsection()]) }}">
+                    <b>Czytaj dalej</b>
+                    </a>
+                  </div>
                 </div>
               @endforeach
             @endif
@@ -432,11 +432,11 @@
                     </a>
                   </p>
                   <p>{{strip_tags(substr($innerpost->postcontent, 0, 100))}}</p>
-                </div>
-                <div class="row text-center text-primary">
-                  <a href="{{ route('post.show', ['post' => $innerpost, 'section' => $innerpost->getsection()]) }}">
-                  <b>Czytaj dalej</b>
-                  </a>
+                  <div class="row text-center text-primary">
+                    <a href="{{ route('post.show', ['post' => $innerpost, 'section' => $innerpost->getsection()]) }}">
+                    <b>Czytaj dalej</b>
+                    </a>
+                  </div>
                 </div>
               @endforeach
             @endif
