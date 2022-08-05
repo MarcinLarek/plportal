@@ -1,5 +1,6 @@
 @extends('layouts.navbar.'.$section)
 @section('mainpage')
+<!--
 <div class="row ads">
   <div class="col w-100 text-center">
   REKLAMA
@@ -16,9 +17,8 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
   </div>
-</div>
-@if(count($posts) < 10 or is_null($firstpost))
-@else
+</div>-->
+
 <div class="row">
     <div class="col-xl-8 col-l-8 col-md-12 col-sm-12 ">
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -74,10 +74,9 @@
             @endforeach
     </div>
 </div>
-@endif
 
-@if(count($posts) < 5)
-@else
+
+
 <div class="row pt-3">
   <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$firstpost->image}}')">
     <a href="{{ route('post.show', ['post' => $firstpost, 'section' => $firstpost->getsection()]) }}"><h1> <b>{{$firstpost->title}}</b> </h1></a>
@@ -85,28 +84,36 @@
   <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
     <div class="row">
       <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
+        @if(isset($posts[1]))
         <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[1], 'section' => $posts[1]->getsection()]) }}">
         <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[1]->image}}')">
           <h5> <b>{{$posts[1]->title}}</b> </h5>
         </div>
         </a>
+        @endif
+        @if(isset($posts[3]))
         <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[3], 'section' => $posts[3]->getsection()]) }}">
         <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[3]->image}}')">
           <h5> <b>{{$posts[3]->title}}</b> </h5>
         </div>
         </a>
+        @endif
       </div>
       <div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
+        @if(isset($posts[2]))
         <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[2], 'section' => $posts[2]->getsection()]) }}">
         <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[2]->image}}')">
           <h5> <b>{{$posts[2]->title}}</b> </h5>
         </div>
         </a>
+        @endif
+        @if(isset($posts[4]))
         <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[4], 'section' => $posts[4]->getsection()]) }}">
         <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$posts[4]->image}}')">
           <h5> <b>{{$posts[4]->title}}</b> </h5>
         </div>
         </a>
+        @endif
       </div>
     </div>
 
@@ -148,15 +155,14 @@
     </div>
 
   </div>
-
+@if(isset($post[5]))
   <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 bordercolumns d-flex" style="background-image: url('/storage/{{$posts[5]->image}}')">
     <a class="ms-2 me-2" href="{{ route('post.show', ['post' => $posts[5], 'section' => $posts[5]->getsection()]) }}">
     <h1> <b>{{$posts[5]->title}}</b> </h1>
     </a>
   </div>
-
-</div>
 @endif
+</div>
 
 <div class="row pt-4">
   @foreach($posts as $listpost)
@@ -260,7 +266,7 @@
     </div>
   </div>
 </div>
-
+<!--
 <div class="row  ads pt-3 pb-4">
   <div class="col w-100 text-center">
   REKLAMA
@@ -278,5 +284,5 @@
 </script>
   </div>
 </div>
-
+-->
 @endsection
