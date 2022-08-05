@@ -97,7 +97,7 @@
 
 <div class="row">
     <div class="col-12 d-flex justify-content-center">
-
+      {{ $main->links() }}
     </div>
 </div>
 
