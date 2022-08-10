@@ -78,11 +78,23 @@ class PostController extends Controller
     ->with('categories', $categorylist);
   }
 
-  public function serach(Section $section, Request $request)
+  public function search(Section $section, Request $request)
   {
-    $serach = $request['serach'];
-    $main = Post::where('title','like', '%'.$serach.'%')
-                              ->orwhere('postcontent','like', '%'.$serach.'%')
+    $search = $request['serach'];
+    if ($search == null) {
+        $search = "null";
+    }
+
+    return redirect()->route('get.serach', ['section' => $section, 'search' => $search]);
+  }
+
+  public function getsearch(Section $section, $search)
+  {
+    if ($search == "null") {
+        $search = null;
+    }
+    $main = Post::where('title','like', '%'.$search.'%')
+                              ->orwhere('postcontent','like', '%'.$search.'%')
                               ->orderBy('id', 'DESC')
                               ->get()->paginate( 10 );
     $loop = 0;

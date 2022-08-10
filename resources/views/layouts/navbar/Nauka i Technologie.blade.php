@@ -5,7 +5,8 @@
   <div class="row">
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/naukaitechnologienav.png');">
       <div class="text-end pb-1 w-100">
-        <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="get">
+        <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
+          @csrf
           <input type="text" name="serach" value="">
           <input type="submit" value="Szukaj">
         </form>
