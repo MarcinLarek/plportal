@@ -96,7 +96,7 @@ class PostController extends Controller
     $main = Post::where('title','like', '%'.$search.'%')
                               ->orwhere('postcontent','like', '%'.$search.'%')
                               ->orderBy('id', 'DESC')
-                              ->get()->paginate( 10 );
+                              ->get();
     $loop = 0;
     foreach ($main as $temp) {
       if ($temp->getsection()->id != $section->id) {
@@ -105,6 +105,7 @@ class PostController extends Controller
       $loop++;
     }
 
+    $main = $main->paginate( 10 );
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
