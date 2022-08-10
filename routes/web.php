@@ -15,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::domain(config('app.name'))->group(function () {
+
+  Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+  Route::get('/{section}', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
+  Route::get('/{section}/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
+  Route::get('/{section}/Kategorie/{category}', [App\Http\Controllers\PostController::class, 'category'])->name('post.category');
+  Route::get('/{section}/wyszukaj/{search?}', [App\Http\Controllers\PostController::class, 'getsearch'])->name('get.serach');
+  Route::post('/wyszukaj/{section}/', [App\Http\Controllers\PostController::class, 'search'])->name('post.serach');
+
+
   Route::middleware('auth:admin')->group(function () {
       Route::post('/images', [App\Http\Controllers\ImageController::class, 'store'])->name('images.store');
 
@@ -50,6 +59,7 @@ Route::domain(config('app.name'))->group(function () {
         Route::post('/admin/{post}/deletpost', [\App\Http\Controllers\Admin\PostController::class, 'deletepost'])->name('admin.post.deletepost');
 
     });
+
     Route::middleware('guest')->group(function () {
             Route::prefix('/sign-in')->group(function () {
                 Route::get('/', [\App\Http\Controllers\Admin\SignInController::class, 'index'])->name('admin.sign-in');
@@ -59,11 +69,7 @@ Route::domain(config('app.name'))->group(function () {
                 Route::get('/adminlogout', [\App\Http\Controllers\Admin\SignInController::class, 'adminlogout'])->name('admin.adminlogout');
             });
         });
-  Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
-  Route::get('/{section}', [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
-  Route::get('/{section}/{post}', [App\Http\Controllers\PostController::class, 'show'])->name('post.show');
-  Route::get('/{section}/Kategorie/{category}', [App\Http\Controllers\PostController::class, 'category'])->name('post.category');
-  Route::post('/{section}/wyszukaj/', [App\Http\Controllers\PostController::class, 'serach'])->name('post.serach');
+
 });
 
 Auth::routes();
