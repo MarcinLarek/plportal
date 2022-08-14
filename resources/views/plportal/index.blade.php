@@ -131,7 +131,7 @@
 
   <div class="col-xl-8 col-l-8 col-md-12 col-sm-12 col-12">
     <div class="row">
-      @foreach ($section->getposts()->take(12) as $post)
+      @foreach ($section->getposts()->take(9) as $post)
         <div class="col-4 mb-3">
           <a href="{{ route('post.show', ['post' => $post, 'section' => $section]) }}">
           <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$post->image}}')">
@@ -146,9 +146,9 @@
   </div>
 
   <div class="col-xl-4 col-l-4 col-md-12 col-sm-12 col-12">
-      @foreach ($section->getposts() as $post)
-      @continue($loop->iteration < 13)
-      @if($loop->iteration == 13)
+      @foreach ($section->getposts()->take(19) as $post)
+      @continue($loop->iteration < 10)
+      @if($loop->iteration == 10)
       <div class="row pt-1">
           <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
               <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 mainpagerightlist"></a>
