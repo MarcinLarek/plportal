@@ -14,7 +14,7 @@ class HomeController extends Controller
        $firstpost = Post::orderBy('id', 'DESC')->first();
        $posts = Post::orderBy('id', 'DESC')->skip(1)->take(24)->get();
        $sections = Section::get();
-
+       /*
        $fakty = Section::where('section','Fakty')->first();
        $fakty = $fakty->getposts();
        $fakty = $fakty->take(5);
@@ -54,10 +54,11 @@ class HomeController extends Controller
        $spoleczenstwo = Section::where('section','Społeczeństwo')->first();
        $spoleczenstwo = $spoleczenstwo->getposts();
        $spoleczenstwo = $spoleczenstwo->take(5);
+       */
          return view('plportal.index')
          ->with('firstpost', $firstpost)
          ->with('posts', $posts)
-         ->with('fakty', $fakty)
+         /*->with('fakty', $fakty)
          ->with('biznes', $biznes)
          ->with('sport', $sport)
          ->with('salonpolityczny', $salonpolityczny)
@@ -70,6 +71,7 @@ class HomeController extends Controller
          ->with('slubzbymundurowe', $slubzbymundurowe)
          ->with('turystyka', $turystyka)
          ->with('spoleczenstwo', $spoleczenstwo)
+         */
          ->with('sections', $sections);
      }
 
