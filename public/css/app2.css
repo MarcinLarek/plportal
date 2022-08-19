@@ -4,7 +4,7 @@
 
 .headerimage {
   overflow: hidden;
-  height: 200px;
+  height: 136px;
   background-repeat: no-repeat;
   background-size: 100% calc(100%);
   background-position: center;
@@ -12,11 +12,11 @@
   justify-items: end !important;
 }
 
-.navbar-nav > li > .dropdown-menu {
+.navbar-main-nav > li > .dropdown-menu {
   background-color: #4d4d4d;
 }
 
-.navbar-nav > li > .dropdown-menu > .dropdown-item {
+.navbar-main-nav > li > .dropdown-menu > .dropdown-item {
   background-color: #4d4d4d;
   color: #ffffff;
 }
@@ -73,7 +73,8 @@
 
 .secondnavbaritem {
   color: #ffffff;
-  font-size: large;
+  font-size: medium;
+  text-transform: uppercase;
 }
 
 .secondnavbaritem:hover  {

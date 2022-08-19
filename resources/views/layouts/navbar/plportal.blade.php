@@ -15,16 +15,6 @@
   </div>
 </div>
 
-<div class="row pt-3 pb-3">
-  <div class="col-2">
-    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-      <option selected>Polski</option>
-      <option value="1">Angielski</option>
-    </select>
-  </div>
-  <hr></hr>
-</div>
-
 @yield('mainpage')
 </div>
 
