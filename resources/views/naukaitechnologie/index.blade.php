@@ -120,7 +120,7 @@
 
 
 
-  <div class="row pt-2">
+  <div class="row mt-4">
     <div class="d-flex text-section">
       <div class="col-10">
         <h1 class="text-section text-uppercase">{{$category->category}} </h1>
@@ -192,8 +192,10 @@
             @continue($loop->iteration < 5)
               @if(isset($inpost))
               <div class="col mt-4 section-imagebox bg-section">
-                <div class="section-bottomtabeimage" style="background-image: url('/storage/{{ $inpost->image }}')">
-                </div>
+                <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
+                  <div class="section-bottomtabeimage" style="background-image: url('/storage/{{ $inpost->image }}')">
+                  </div>
+                </a>
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}" style="padding:5px;">{{$inpost->title}}</a>
               </div>
               @endif
