@@ -24,12 +24,13 @@ class PostController extends Controller
       $firstpost = $posts->sortDesc()->first();
       $posts = $posts->sortDesc()->slice(1)->take(28);
       $sections = Section::get();
-      $navbarsection = $section->section;
-      return view($section->section.'.index')
+      $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
+      return view($cleansection.'.index')
        ->with('firstpost', $firstpost)
        ->with('posts', $posts)
        ->with('categories', $categorylist)
-       ->with('section', $navbarsection)
+       ->with('serachsection', $section)
+       ->with('section', $cleansection)
        ->with('sections', $sections);
   }
 
@@ -45,11 +46,13 @@ class PostController extends Controller
                              ->get();
     $sections = Section::get();
     $admin = Admin::where('id',$post->admin_id)->first();
-    return view($section->section.'.show')
+    $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
+    return view($cleansection.'.show')
     ->with('post', $post)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
-    ->with('section', $section->section)
+    ->with('section', $cleansection)
+    ->with('serachsection', $section)
     ->with('sections', $sections)
     ->with('admin', $admin)
     ->with('categories', $categorylist);
@@ -64,12 +67,14 @@ class PostController extends Controller
                              ->where('parent_category_id',null)
                              ->get();
     $sections = Section::get();
+    $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
 
-    return view($section->section.'.category')
+    return view($cleansection.'.category')
     ->with('main', $main)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
-    ->with('section', $section->section)
+    ->with('section', $cleansection)
+    ->with('serachsection', $section)
     ->with('sections', $sections)
     ->with('categories', $categorylist);
   }
@@ -80,7 +85,6 @@ class PostController extends Controller
     if ($search == null) {
         $search = "null";
     }
-
     return redirect()->route('get.serach', ['section' => $section, 'search' => $search]);
   }
 
@@ -108,12 +112,13 @@ class PostController extends Controller
                              ->where('parent_category_id',null)
                              ->get();
     $sections = Section::get();
-
-    return view($section->section.'.category')
+    $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
+    return view($cleansection.'.category')
     ->with('main', $main)
     ->with('posts', $posts)
     ->with('topposts', $topposts)
-    ->with('section', $section->section)
+    ->with('section', $cleansection)
+    ->with('serachsection', $section)
     ->with('sections', $sections)
     ->with('categories', $categorylist);
   }

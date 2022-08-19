@@ -9,7 +9,7 @@
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/naukaitechnologienav.png');">
       <a href="{{route('index')}}" class="w-75 h-100"></a>
       <div class="text-end pb-1 w-100">
-        <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
+        <form id="search" action="{{ route('post.serach',['section' => $serachsection] ) }}" method="post">
           @csrf
           <input type="text" name="serach" value="">
           <input type="submit" value="Szukaj">
@@ -26,7 +26,7 @@
   <div class="collapse navbar-collapse">
       <ul class="navbar-nav navbar-section mx-auto">
         <li class="nav-item">
-          <a class="nav-link navbaritem-section" href="{{ route( 'post.index', ['section' => $section] ) }}"> <b>Strona Główna</b> </a>
+          <a class="nav-link navbaritem-section" href="{{ route( 'post.index', ['section' => $serachsection] ) }}"> <b>Strona Główna</b> </a>
         </li>
 
         <li class="nav-item dropdown">
