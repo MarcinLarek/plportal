@@ -1,6 +1,6 @@
-<nav class="navbar-expand-xxl bg-light">
+<nav class="navbar-expand-xxl bg-section">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav navbar-main-nav mx-auto">
           @foreach($sections as $section)
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
