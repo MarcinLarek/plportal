@@ -16,6 +16,7 @@ class PostController extends Controller
 
   public function index(Section $section)
   {
+      
       $posts = $section->getposts()->sortDesc();
 
       $categorylist = Category::where('section_id',$section->id)
