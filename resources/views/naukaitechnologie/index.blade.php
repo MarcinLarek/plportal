@@ -2,7 +2,7 @@
 @section('mainpage')
 <div class="row mb-3 d-flex text-section" style="">
 <div class="col-6">
-<h5>WIADOMOŚCI</h5>
+<h5>NAJNOWSZE</h5>
 </div>
 <div class="col-6 mt-auto" style="text-align:right;">
   <form id="search" action="{{ route('post.serach',['section' => $serachsection] ) }}" method="post">

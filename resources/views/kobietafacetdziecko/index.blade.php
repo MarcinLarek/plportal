@@ -2,7 +2,7 @@
 @section('mainpage')
 <div class="row mb-3 d-flex text-section" style="">
 <div class="col-6">
-<h5>AKTUALNOŚCI</h5>
+<h5>NAJNOWSZE</h5>
 </div>
 <div class="col-6 mt-auto" style="text-align:right;">
   <form id="search" action="{{ route('post.serach',['section' => $serachsection] ) }}" method="post">
@@ -79,7 +79,43 @@
 </div>
 
 @foreach($categories as $category)
-  @if($loop->iteration % 2 == 1)
+
+
+  @if( $category->getsubcategories()->isempty() )
+
+
+
+  <div class="row pt-5 mt-5">
+    <div class="d-flex text-section">
+      <div class="col-10">
+        <h5 class="text-section text-uppercase">{{$category->category}} </h5>
+      </div>
+      <div class="col-2 mt-auto" style="text-align:right;">
+        <a href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">
+          ZOBACZ WSZYSTKO
+        </a>
+      </div>
+    </div>
+  <hr class="section-hr">
+    @foreach($category->getposts()->take(4) as $listpost)
+      <div class="col section-imagebox bg-section">
+        <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+        <div class="col-3 w-100 section-threepostsection d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+        </div>
+        </a>
+        <div class="row" style="padding-left:10px;">
+          <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+          <b>{{$listpost->title}}</b>
+          </a>
+          <p>{{strip_tags(substr($listpost->postcontent, 0, 100))}}...</p>
+        </div>
+      </div>
+    @endforeach
+  </div>
+
+
+
+  @elseif($loop->iteration % 2 == 1)
   <div class="row mt-4">
     <div class="d-flex text-section">
       <div class="col-10">
@@ -171,7 +207,13 @@
     @endforeach
   </div>
   </div>
+
+
+
   @else
+
+
+
   <div class="row mt-4">
     <div class="d-flex text-section">
       <div class="col-10">
