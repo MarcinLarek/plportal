@@ -9,7 +9,7 @@
                 {{$post->created_at}}
                 {{$post->author}}
             </div>
-            <div class="col-xl-10 col-l-10 col-md-12 col-sm-12 text-primary">
+            <div class="col-xl-10 col-l-10 col-md-12 col-sm-12 text-section">
                 <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
                     <h5><b>{{$post->title}}</b></h5>
                 </a>
@@ -49,7 +49,7 @@
             <div class="col-9">
                 <div class="">
                     <a href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
-                        <b class="text-primary" style="font-size:12px;"> {{$list->title}}</b>
+                        <b class="text-section" style="font-size:12px;"> {{$list->title}}</b>
                     </a>
                 </div>
                 <div class="" style="font-size:12px;">
@@ -85,7 +85,7 @@
             <div class="col-8">
                 <div class="">
                     <a href="{{ route('post.show', ['post' => $list, 'section' => $list->getsection()]) }}">
-                        <b class="text-primary"> {{$list->title}}</b>
+                        <b class="text-section"> {{$list->title}}</b>
                     </a>
                 </div>
             </div>

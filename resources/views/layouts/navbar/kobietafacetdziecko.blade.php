@@ -1,11 +1,15 @@
 @extends('layouts.app')
+@section('styles')
+<link href="{{ asset('css/appkfd.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 
-<div class="container">
+<div class="container pt-4">
   <div class="row">
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/kfdnav.png');">
+      <a href="{{route('index')}}" class="w-75 h-100"></a>
       <div class="text-end pb-1 w-100">
-        <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
+        <form id="search" action="{{ route('post.serach',['section' => $serachsection] ) }}" method="post">
           @csrf
           <input type="text" name="serach" value="">
           <input type="submit" value="Szukaj">
@@ -13,40 +17,127 @@
       </div>
   </div>
 </div>
-
-<div class="pt-3 pb-4">
+<!-- Przyciski do polubienia i udostępnienia strony
+<div class="pt-3">
 <div class="fb-like" data-href="https://www.facebook.com/plportalpl/" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
 </div>
-
-<div class="card" style="padding:6px;">
-</div>
-
-<nav class="navbar-expand-sm bg-primary">
+-->
+<nav class="navbar-expand-sm bg-section mt-4 mb-4">
   <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mx-auto">
+      <ul class="navbar-nav navbar-section mx-auto">
         <li class="nav-item">
-          <a class="nav-link secondnavbaritem" href="{{route('index')}}">PLPORTAL.pl</a>
+          <a class="nav-link navbaritem-section" href="{{ route( 'post.index', ['section' => $serachsection] ) }}"> <b>Strona Główna</b> </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link secondnavbaritem" href="{{ route( 'post.index', ['section' => $section] ) }}">Strona Główna</a>
+
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="" role="button" data-bs-toggle="dropdown">
+              Wiadomości
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 27)->first(), 'section' => $categories->where('id', 27)->first()->getsection()]) }}">
+                {{$categories->where('id', 27)->first()->category}}
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 28)->first(), 'section' => $categories->where('id', 28)->first()->getsection()]) }}">
+                {{$categories->where('id', 28)->first()->category}}
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 29)->first(), 'section' => $categories->where('id', 29)->first()->getsection()]) }}">
+                {{$categories->where('id', 29)->first()->category}}
+            </a>
+          </div>
         </li>
-        @foreach($categories as $category)
-          <li class="nav-item">
-            <a class="nav-link secondnavbaritem" href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">{{$category->category}}</a>
-          </li>
-        @endforeach
+        <?php $hobby = $sections->where('id',6)->first(); $hobbycat = $hobby->getcategories(); ?>
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.index', ['section' => $hobby]) }}" role="button" data-bs-toggle="dropdown">
+              {{$hobby->section}}
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.index', ['section' => $hobby]) }}">
+                {{$hobby->section}}
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $hobbycat->where('id', 37)->first(), 'section' => $hobby]) }}">
+                {{$hobbycat->where('id', 37)->first()->category}}
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $hobbycat->where('id', 37)->first(), 'section' => $hobby]) }}">
+                Artystyczne
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $hobbycat->where('id', 35)->first(), 'section' => $hobby]) }}">
+                {{$hobbycat->where('id', 35)->first()->category}}
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $hobbycat->where('id', 42)->first(), 'section' => $hobby]) }}">
+                {{$hobbycat->where('id', 42)->first()->category}}
+            </a>
+          </div>
+        </li>
+
+
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 31)->first(), 'section' => $categories->where('id', 31)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+              {{$categories->where('id', 31)->first()->category}}
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 31)->first(), 'section' => $categories->where('id', 31)->first()->getsection()]) }}">
+                {{$categories->where('id', 31)->first()->category}}
+            </a>
+            @foreach($categories->where('id', 31)->first()->getsubcategories() as $sub)
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $sub, 'section' => $sub->getsection()]) }}">
+                {{$sub->category}}
+            </a>
+            @endforeach
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 121)->first(), 'section' => $categories->where('id', 121)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+              {{$categories->where('id', 121)->first()->category}}
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 121)->first(), 'section' => $categories->where('id', 121)->first()->getsection()]) }}">
+                {{$categories->where('id', 121)->first()->category}}
+            </a>
+            @foreach($categories->where('id', 121)->first()->getsubcategories() as $sub)
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $sub, 'section' => $sub->getsection()]) }}">
+                {{$sub->category}}
+            </a>
+            @endforeach
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 30)->first(), 'section' => $categories->where('id', 30)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+              {{$categories->where('id', 30)->first()->category}}
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 30)->first(), 'section' => $categories->where('id', 30)->first()->getsection()]) }}">
+                {{$categories->where('id', 30)->first()->category}}
+            </a>
+            @foreach($categories->where('id', 30)->first()->getsubcategories() as $sub)
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $sub, 'section' => $sub->getsection()]) }}">
+                {{$sub->category}}
+            </a>
+            @endforeach
+          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 33)->first(), 'section' => $categories->where('id', 33)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+              {{$categories->where('id', 33)->first()->category}}
+          </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 33)->first(), 'section' => $categories->where('id', 33)->first()->getsection()]) }}">
+                {{$categories->where('id', 33)->first()->category}}
+            </a>
+            @foreach($categories->where('id', 33)->first()->getsubcategories() as $sub)
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $sub, 'section' => $sub->getsection()]) }}">
+                {{$sub->category}}
+            </a>
+            @endforeach
+          </div>
+        </li>
+
+
       </ul>
   </div>
 </nav>
-
-<div class="row pt-3 pb-3">
-<div class="col-2">
-  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-    <option selected>Polski</option>
-    <option value="1">Angielski</option>
-  </select>
-</div>
-</div>
 
 @yield('mainpage')
 </div>

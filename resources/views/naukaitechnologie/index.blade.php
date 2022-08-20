@@ -5,7 +5,7 @@
 <h1>WIADOMOŚCI</h1>
 </div>
 <div class="col-6 mt-auto" style="text-align:right;">
-  <form id="search" action="{{ route('post.serach',['section' => $section] ) }}" method="post">
+  <form id="search" action="{{ route('post.serach',['section' => $serachsection] ) }}" method="post">
     @csrf
     <input type="hidden" name="serach" value="">
 
