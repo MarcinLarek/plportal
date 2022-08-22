@@ -137,27 +137,29 @@ class PostController extends Controller
         $i = Post::orderBy('id', 'desc')->first()->id;
         $i++;
       }
-      for ($b=0; $b < 11; $b++) {
 
         foreach ($categories as $category) {
-          $data = array(
-           'admin_id' => auth()->user()->id,
-           'title' => 'Test Title ',
-           'author' => 'Test author',
-           'source' => 'test source',
-           'postcontent' => 'asdihas dkljsad kljsd ajads oidjs iodsajoiasdj iodsajadsoi jdas iojdsaoi jadsio jsadio jaisodj ioasdj saiojd saiojd ioasj iasdjasdiojasd iodasj ioasd jioasd joiasdj sadioj dsaiojdas is adjiodasjoiasdj ioasjds iojadsiodas jiodsaj idoasj dsaioj dsaiojd asiodj sioasj iasodj asoid jasido jasiojas ofjipsjd dfgjsdi j[-figsj isdgjdaf[sigsdj]]',
-           'image' => 'uploads/u1GNj6AAwIYdns643P5qD8eYiEEr1PLhCg5uT8nH.jpg',
-         );
-         Post::create($data);
-         $post = Post::latest()->first();
-         $data2 = array(
-           'post_id' => $i,
-           'category_id' => $category->id,
-         );
-         PostCategories::create($data2);
-         $i++;
+          if ($category->getposts()->isempty()) {
+            for ($b=0; $b < 11; $b++) {
+            $data = array(
+             'admin_id' => auth()->user()->id,
+             'title' => 'Test Title ',
+             'author' => 'Test author',
+             'source' => 'test source',
+             'postcontent' => 'asdihas dkljsad kljsd ajads oidjs iodsajoiasdj iodsajadsoi jdas iojdsaoi jadsio jsadio jaisodj ioasdj saiojd saiojd ioasj iasdjasdiojasd iodasj ioasd jioasd joiasdj sadioj dsaiojdas is adjiodasjoiasdj ioasjds iojadsiodas jiodsaj idoasj dsaioj dsaiojd asiodj sioasj iasodj asoid jasido jasiojas ofjipsjd dfgjsdi j[-figsj isdgjdaf[sigsdj]]',
+             'image' => 'uploads/u1GNj6AAwIYdns643P5qD8eYiEEr1PLhCg5uT8nH.jpg',
+           );
+           Post::create($data);
+           $post = Post::latest()->first();
+           $data2 = array(
+             'post_id' => $i,
+             'category_id' => $category->id,
+           );
+           PostCategories::create($data2);
+           $i++;
+           }
+          }
         }
-      }
       return redirect()->back()->with('successalert', 'successalert');
     }
 }
