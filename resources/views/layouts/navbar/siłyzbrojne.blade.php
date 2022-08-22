@@ -7,7 +7,7 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/silyzbrojnenav.png');">
-      <a href="{{route('index')}}" class="w-75 h-100"></a>
+      <a href="{{route('index')}}" class="w-50 h-100"></a>
   </div>
 </div>
 <div class="text-end mt-1 w-100">
