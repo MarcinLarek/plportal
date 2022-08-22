@@ -98,6 +98,13 @@
           <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.index',['section' => $sections->where('id', 6)->first()->section]) }}" role="button" data-bs-toggle="dropdown">
               {{$sections->where('id', 6)->first()->section}}
           </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.index',['section' => $sections->where('id', 6)->first()->section]) }}">
+                {{$sections->where('id', 6)->first()->section}}
+            </a>
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $sections->where('id', 6)->first()->getcategories()->where('id',118)->first(), 'section' => $sections->where('id', 6)->first()]) }}">
+                {{$sections->where('id', 6)->first()->getcategories()->where('id',118)->first()->category}}
+            </a>
         </li>
 
       </ul>

@@ -50,6 +50,17 @@
           <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.index',['section' => $sections->where('id', 6)->first()->section]) }}" role="button" data-bs-toggle="dropdown">
               {{$sections->where('id', 6)->first()->section}}
           </a>
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+            <a class="dropdown-item border-solid" href="{{ route('post.index',['section' => $sections->where('id', 6)->first()->section]) }}">
+                {{$sections->where('id', 6)->first()->section}}
+            </a>
+            @foreach($sections->where('id', 6)->first()->getcategories() as $sub)
+            @if($sub->parent_category_id == null)
+            <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $sub, 'section' => $sub->getsection()]) }}">
+                {{$sub->category}}
+            </a>
+            @endif
+            @endforeach
         </li>
 
         <li class="nav-item dropdown">
