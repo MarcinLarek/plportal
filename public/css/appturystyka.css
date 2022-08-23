@@ -8,6 +8,18 @@
   font-family: Arial;
   align-items: flex-end;
 }
+
+.section-littleimage {
+  overflow: hidden;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: Arial;
+  align-items: flex-end;
+}
+
 .section-fisttableimage {
   overflow: hidden;
   height: 400px;
@@ -44,12 +56,12 @@
 .btn-sectiontext {
   border: none;
   background-color: inherit;
-  color: #ffd200;
+  color: #70b8b4;
 }
 
 .bg-section {
-  background-color: #ffd200;
-  color: #000000;
+  background-color: #70b8b4;
+  color: #ffffff;
 }
 
 .section-imagebox {
@@ -60,29 +72,30 @@
   margin
 }
 .text-section {
-  color: #ffd200;
+  color: #70b8b4;
 }
 
 .nav-link:focus, .nav-link:hover {
-  color: #ffd200;
+  color: #70b8b4;
   background-color: #ffffff;
 }
 
 
 .active {
-  color: #ffd200 !important;
+  color: #70b8b4;
+  background-color: #ffffff;
   font-weight: bold;
 }
 
 .navbaritem-section {
-  color: #000000;
+  color: #ffffff;
   font-size: medium;
   text-transform: uppercase;
 }
 
 .navbaritem-section:hover, .navbaritem-section:focus  {
-  background-color: #000000;
-  color: #ffd200;
+  background-color: #ffffff;
+  color: #70b8b4;
 }
 
 .navbar-section > li > .dropdown-menu {
@@ -93,29 +106,29 @@
 
 .navbar-section > li > .dropdown-menu > .dropdown-item {
   background-color: #ffffff;
-  color: #000000;
+  color: #70b8b4;
   border: solid;
   border-width: 1px 1px 1px 1px;
-  border-color: #ffd200;
+  border-color: #70b8b4;
   font-size: medium;
   text-transform: uppercase;
   text-align: center;
 }
 .navbar-section > li > .dropdown-menu > .dropdown-item:hover {
-  background-color: #ffd200;
-  color: #000000;
+  background-color: #70b8b4;
+  color: #ffffff;
 }
 .bg-section {
-  background-color: #ffd200;
+  background-color: #70b8b4;
 }
 
 .dropdown-toggle {
-  color: #000000;
-  background-color: #ffd200;
+  color: #ffffff;
+  background-color: #70b8b4;
 }
 
 .dropdown-toggle:focus, .dropdown-toggle:hover {
-  color: #000000;
+  color: #70b8b4;
   background-color: #ffffff;
 }
 
@@ -124,8 +137,26 @@
 }
 
 hr.section-hr {
-    color: #ffd200;
-    background-color: #ffd200;
-    border: 2px solid;
+    color: #70b8b4;
+    background-color: #70b8b4;
+    border: 1px solid;
     opacity: 1;
+}
+
+.nav-pills > .pill-section {
+  background-color: #ffffff !important;
+  color: #27403b !important;
+  border: solid !important;
+  border-width: 1px 1px 1px 1px !important;
+  border-color: #27403b !important;
+  font-size: medium !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  margin-bottom: 5px;
+  border-radius: 0px;
+}
+
+.nav-pills > .active {
+  background-color: #27403b !important;
+  color: #ffffff !important;
 }

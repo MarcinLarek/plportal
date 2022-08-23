@@ -133,7 +133,7 @@
   <hr class="section-hr">
 
   <div class="row">
-    <ul class="nav nav-tabs" id="TUTUpreg_replace('/\s+/', '', $category->category)" role="tablist">
+    <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}" role="tablist">
       @foreach($category->getsubcategories() as $sub)
       @if($loop->iteration == 1)
       <li class="nav-item" role="presentation">
@@ -147,7 +147,7 @@
       @endforeach
     </ul>
 
-  <div class="tab-content" id="TUTUpreg_replace('/\s+/', '', $category->category)Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}Content">
     @foreach($category->getsubcategories() as $sub)
     @if($loop->iteration == 1)
       <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
@@ -225,7 +225,7 @@
   <hr class="section-hr">
 
   <div class="row">
-    <ul class="nav nav-tabs" id="TUTUpreg_replace('/\s+/', '', $category->category)" role="tablist">
+    <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}" role="tablist">
       @foreach($category->getsubcategories() as $sub)
       @if($loop->iteration == 1)
       <li class="nav-item" role="presentation">
@@ -239,7 +239,7 @@
       @endforeach
     </ul>
 
-  <div class="tab-content" id="TUTUpreg_replace('/\s+/', '', $category->category)Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}Content">
     @foreach($category->getsubcategories() as $sub)
     @if($loop->iteration == 1)
       <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
