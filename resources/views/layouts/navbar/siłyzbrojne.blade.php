@@ -17,11 +17,6 @@
     <input type="submit" class="bg-section" value="Szukaj">
   </form>
 </div>
-<!-- Przyciski do polubienia i udostępnienia strony
-<div class="pt-3">
-<div class="fb-like" data-href="https://www.facebook.com/plportalpl/" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
-</div>
--->
 <nav class="navbar-expand-sm bg-section mt-1 mb-3">
   <div class="collapse navbar-collapse">
       <ul class="navbar-nav navbar-section mx-auto">
