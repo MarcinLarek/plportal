@@ -307,6 +307,8 @@
       </div>
     </div>
   </div>
+</div>
+
 
   @elseif($loop->iteration % 2 == 0)
 
@@ -397,7 +399,7 @@
     @endforeach
   </div>
   </div>
-
+</div>
 
 
 @else
@@ -487,6 +489,7 @@
       </div>
     </div>
   @endforeach
+</div>
 </div>
 </div>
 
