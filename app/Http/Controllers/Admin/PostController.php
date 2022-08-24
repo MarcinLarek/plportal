@@ -127,7 +127,7 @@ class PostController extends Controller
     }
 
     public function temppostmaker()
-    {
+    {/*
       $categories = Category::get();
 
       if (Post::get()->isempty()) {
@@ -160,6 +160,6 @@ class PostController extends Controller
            }
           }
         }
-      return redirect()->back()->with('successalert', 'successalert');
+      return redirect()->back()->with('successalert', 'successalert');*/
     }
 }

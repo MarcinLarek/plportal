@@ -60,6 +60,7 @@
               </div>
           </div>
       </div>
+      <!--
       <div class="col-md-3">
           <div href="#" class="card text-center bg-danger shadow">
               <div class="card-body mt-5 mb-5">
@@ -70,6 +71,7 @@
           </div>
       </div>
     </div>
+  -->
     @endif
 </div>
 
