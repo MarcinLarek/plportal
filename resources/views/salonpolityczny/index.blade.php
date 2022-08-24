@@ -116,6 +116,8 @@
     </div>
     @endforeach
   </div>
+</div>
+
 
 
   @elseif($loop->iteration == 2 )
@@ -248,6 +250,7 @@
     @endforeach
   </div>
   </div>
+</div>
 
 
 

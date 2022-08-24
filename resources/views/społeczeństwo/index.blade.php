@@ -265,7 +265,7 @@
     @endforeach
   </div>
   </div>
-
+</div>
 
 
 @else
@@ -357,7 +357,7 @@
   @endforeach
 </div>
 </div>
-
+</div>
 
 
 @endif

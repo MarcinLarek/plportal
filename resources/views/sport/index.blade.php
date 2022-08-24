@@ -205,7 +205,7 @@
     @endforeach
   </div>
   </div>
-
+</div>
 
 
 @elseif ($loop->iteration % 3 == 2)
@@ -268,7 +268,7 @@
   @endforeach
 </div>
 </div>
-
+</div>
 
 
 @else
@@ -360,7 +360,7 @@
   @endforeach
 </div>
 </div>
-
+</div>
 
 
 @endif

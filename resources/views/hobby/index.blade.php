@@ -172,6 +172,7 @@
       </div>
     </div>
   </div>
+</div>
 
 
 
@@ -234,7 +235,7 @@
     @endforeach
   </div>
   </div>
-
+</div>
 
 
 
@@ -312,7 +313,7 @@
   @endforeach
 </div>
 </div>
-
+</div>
 
 
 @else
@@ -389,7 +390,7 @@
   @endforeach
 </div>
 </div>
-
+</div>
 
 
 
