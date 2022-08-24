@@ -333,6 +333,25 @@
 
 </div>
 <hr class="section-hr">
+
+<div class="row">
+
+  @foreach( $sections->where('id', 6)->first()->getcategories()->where('id', 118)->first()->getposts()->take(4) as $listpost)
+    <div class="col section-imagebox bg-section">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="col-3 w-100 section-threepostsection d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+      </div>
+      </a>
+      <div class="row" style="padding-left:10px;">
+        <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+        <b>{{$listpost->title}}</b>
+        </a>
+        <p>{{strip_tags(substr($listpost->postcontent, 0, 100))}}...</p>
+      </div>
+    </div>
+  @endforeach
+
+</div>
 </div>
 
 @endsection

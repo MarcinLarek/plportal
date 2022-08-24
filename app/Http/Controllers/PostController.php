@@ -23,7 +23,12 @@ class PostController extends Controller
                                ->where('parent_category_id',null)
                                ->get();
       $firstpost = $posts->sortDesc()->first();
-      $posts = $posts->sortDesc()->slice(1)->take(28);
+      if ($section->id == 1) {
+        $posts = $posts->sortDesc()->slice(1)->take(37);
+      }
+      else {
+        $posts = $posts->sortDesc()->slice(1)->take(28);
+      }
       $sections = Section::get();
       $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
       return view($cleansection.'.index')
