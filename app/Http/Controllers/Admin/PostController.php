@@ -84,6 +84,7 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $imagePath = request('image')->store('uploads', 'public');
+        dd($imagePath = request('image')->store('uploads', 'public'));
         $optimizerChain = OptimizerChainFactory::create();
         $optimizerChain->optimize('storage/'.$imagePath);
 
@@ -123,5 +124,42 @@ class PostController extends Controller
       $post = Post::find($id);
       $post->delete();
       return redirect()->route('admin.index')->with('successalert', 'successalert');
+    }
+
+    public function temppostmaker()
+    {/*
+      $categories = Category::get();
+
+      if (Post::get()->isempty()) {
+        $i = 1;
+      }
+      else {
+        $i = Post::orderBy('id', 'desc')->first()->id;
+        $i++;
+      }
+
+        foreach ($categories as $category) {
+          if ($category->getposts()->isempty()) {
+            for ($b=0; $b < 11; $b++) {
+            $data = array(
+             'admin_id' => auth()->user()->id,
+             'title' => 'Test Title ',
+             'author' => 'Test author',
+             'source' => 'test source',
+             'postcontent' => 'asdihas dkljsad kljsd ajads oidjs iodsajoiasdj iodsajadsoi jdas iojdsaoi jadsio jsadio jaisodj ioasdj saiojd saiojd ioasj iasdjasdiojasd iodasj ioasd jioasd joiasdj sadioj dsaiojdas is adjiodasjoiasdj ioasjds iojadsiodas jiodsaj idoasj dsaioj dsaiojd asiodj sioasj iasodj asoid jasido jasiojas ofjipsjd dfgjsdi j[-figsj isdgjdaf[sigsdj]]',
+             'image' => 'uploads/u1GNj6AAwIYdns643P5qD8eYiEEr1PLhCg5uT8nH.jpg',
+           );
+           Post::create($data);
+           $post = Post::latest()->first();
+           $data2 = array(
+             'post_id' => $i,
+             'category_id' => $category->id,
+           );
+           PostCategories::create($data2);
+           $i++;
+           }
+          }
+        }
+      return redirect()->back()->with('successalert', 'successalert');*/
     }
 }

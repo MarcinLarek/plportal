@@ -8,6 +8,7 @@
   <form id="search" action="{{ route('post.serach',['section' => $serachsection] ) }}" method="post">
     @csrf
     <input type="hidden" name="serach" value="">
+
     <input type="submit" class="btn-sectiontext" value="ZOBACZ WSZYSTKO">
   </form>
 
@@ -82,9 +83,7 @@
 
   @if( $category->getsubcategories()->isempty() )
 
-
-
-
+<?php $innerposts = $category->getposts()->take(7); ?>
   <div class="row pt-5 mt-5">
     <div class="d-flex text-section">
       <div class="col-10">
@@ -97,25 +96,138 @@
       </div>
     </div>
   <hr class="section-hr">
-    @foreach($category->getposts()->take(4) as $listpost)
-      <div class="col section-imagebox bg-section">
-        <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
-        <div class="col-3 w-100 section-threepostsection d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
-        </div>
-        </a>
-        <div class="row" style="padding-left:10px;">
-          <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
-          <b>{{$listpost->title}}</b>
+    <div class="row">
+      <div class="col-7 ">
+        <div class="section-imagebox bg-section">
+          @if(isset($innerposts[0]))
+          <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
+          <div class="section-fisttableimage" style="background-image: url('/storage/{{ $innerposts[0]->image }}')">
+          </div>
           </a>
-          <p>{{strip_tags(substr($listpost->postcontent, 0, 100))}}...</p>
+          <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}"><h4 style="padding:5px;">{{$innerposts[0]->title}}</h4></a>
+          @endif
+        </div>
+      </div>
+      <div class="col-5">
+        @foreach($innerposts as $inpost)
+        @continue($loop->iteration < 2)
+        @break($loop->iteration == 5)
+        <div class="row mb-3">
+          <div class="col-5">
+            <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
+            <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
+            </div>
+            </a>
+          </div>
+          <div class="col-7">
+            <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
+            <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
+          </div>
+        </div>
+        @endforeach
+      </div>
+    </div>
+    <div class="row">
+      @foreach($innerposts as $inpost)
+        @continue($loop->iteration < 5)
+          @if(isset($inpost))
+          <div class="col mt-4 section-imagebox bg-section">
+            <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
+              <div class="section-bottomtabeimage" style="background-image: url('/storage/{{ $inpost->image }}')">
+              </div>
+            </a>
+            <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}" style="padding:5px;">{{$inpost->title}}</a>
+          </div>
+          @endif
+      @endforeach
+    </div>
+    </div>
+
+
+
+
+  @elseif($loop->iteration % 3 == 0)
+  <div class="row mt-4">
+    <div class="d-flex text-section">
+      <div class="col-10">
+        <h5 class="text-section text-uppercase">{{$category->category}} </h5>
+      </div>
+      <div class="col-2 mt-auto" style="text-align:right;">
+        <a href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">
+          ZOBACZ WSZYSTKO
+        </a>
+      </div>
+    </div>
+  <hr class="section-hr">
+
+  <div class="row">
+    <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $category->id)}}" role="tablist">
+      @foreach($category->getsubcategories() as $sub)
+      @if($loop->iteration == 1)
+      <li class="nav-item" role="presentation">
+        <button class="text-dark text-uppercase nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->id)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->id)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+      </li>
+      @else
+      <li class="nav-item" role="presentation">
+        <button class="text-dark text-uppercase nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->id)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->id)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+      </li>
+      @endif
+      @endforeach
+    </ul>
+
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $category->id)}}Content">
+    @foreach($category->getsubcategories() as $sub)
+    @if($loop->iteration == 1)
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->id)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->id)}}">
+        @else
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->id)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->id)}}">
+        @endif
+        <?php $innerposts = $sub->getposts()->take(5); ?>
+        <div class="row">
+          <div class="col-7 ">
+            <div class="row">
+            @foreach($innerposts as $inpost)
+            @break($loop->iteration == 3)
+              <div class="col section-imagebox bg-section">
+                <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
+                <div class="col-3 w-100 section-threepostsection d-flex" style="background-image: url('/storage/{{ $inpost->image }}')">
+                </div>
+                </a>
+                <div class="row" style="padding-left:10px;">
+                  <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
+                  <b>{{$inpost->title}}</b>
+                  </a>
+                  <p>{{strip_tags(substr($inpost->postcontent, 0, 100))}}...</p>
+                </div>
+              </div>
+            @endforeach
+            </div>
+          </div>
+          <div class="col-5">
+            @foreach($innerposts as $inpost)
+            @continue($loop->iteration < 3)
+            <div class="row mb-3">
+              <div class="col-5">
+                <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
+                <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
+                </div>
+                </a>
+              </div>
+              <div class="col-7">
+                <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
+                <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
+              </div>
+            </div>
+            @endforeach
+          </div>
         </div>
       </div>
     @endforeach
   </div>
+  </div>
 
 
-
-  @elseif($loop->iteration % 2 == 0)
+  @else
 
 
 
@@ -133,29 +245,40 @@
   <hr class="section-hr">
 
   <div class="row">
-    <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}" role="tablist">
+    <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $category->id)}}" role="tablist">
       @foreach($category->getsubcategories() as $sub)
       @if($loop->iteration == 1)
       <li class="nav-item" role="presentation">
-        <button class="text-dark text-uppercase nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
+        <button class="text-dark text-uppercase nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->id)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->id)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
       </li>
       @else
       <li class="nav-item" role="presentation">
-        <button class="text-dark text-uppercase nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
+        <button class="text-dark text-uppercase nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->id)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->id)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
       </li>
       @endif
       @endforeach
     </ul>
 
-  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}Content">
+  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $category->id)}}Content">
     @foreach($category->getsubcategories() as $sub)
     @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
+      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->id)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->id)}}">
         @else
-      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
+      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->id)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->id)}}">
         @endif
         <?php $innerposts = $sub->getposts()->take(7); ?>
         <div class="row">
+          <div class="col-7 ">
+            <div class="section-imagebox bg-section">
+              @if(isset($innerposts[0]))
+              <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
+              <div class="section-fisttableimage" style="background-image: url('/storage/{{ $innerposts[0]->image }}')">
+              </div>
+              </a>
+              <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}"><h4 style="padding:5px;">{{$innerposts[0]->title}}</h4></a>
+              @endif
+            </div>
+          </div>
           <div class="col-5">
             @foreach($innerposts as $inpost)
             @continue($loop->iteration < 2)
@@ -173,17 +296,6 @@
               </div>
             </div>
             @endforeach
-          </div>
-          <div class="col-7 ">
-            <div class="section-imagebox bg-section">
-              @if(isset($innerposts[0]))
-              <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
-              <div class="section-fisttableimage" style="background-image: url('/storage/{{ $innerposts[0]->image }}')">
-              </div>
-              </a>
-              <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}"><h4 style="padding:5px;">{{$innerposts[0]->title}}</h4></a>
-              @endif
-            </div>
           </div>
         </div>
         <div class="row">
@@ -204,103 +316,42 @@
     @endforeach
   </div>
   </div>
-
-
-
-@else
-
-
-
-  <div class="row mt-4">
-    <div class="d-flex text-section">
-      <div class="col-10">
-        <h5 class="text-section text-uppercase">{{$category->category}} </h5>
-      </div>
-      <div class="col-2 mt-auto" style="text-align:right;">
-        <a href="{{ route('post.category', ['category' => $category, 'section' => $category->getsection()]) }}">
-          ZOBACZ WSZYSTKO
-        </a>
-      </div>
-    </div>
-  <hr class="section-hr">
-
-  <div class="row">
-    <ul class="nav nav-tabs" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}" role="tablist">
-      @foreach($category->getsubcategories() as $sub)
-      @if($loop->iteration == 1)
-      <li class="nav-item" role="presentation">
-        <button class="text-dark text-uppercase nav-link active" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="true">{{$sub->category}}</button>
-      </li>
-      @else
-      <li class="nav-item" role="presentation">
-        <button class="text-dark text-uppercase nav-link" id="home-tab{{preg_replace('/\s+/', '', $sub->category)}}" data-bs-toggle="tab" data-bs-target="#home{{preg_replace('/\s+/', '', $sub->category)}}" type="button" role="tab" aria-controls="home" aria-selected="false">{{$sub->category}}</button>
-      </li>
-      @endif
-      @endforeach
-    </ul>
-
-  <div class="tab-content" id="TUTU{{preg_replace('/\s+/', '', $category->category)}}Content">
-    @foreach($category->getsubcategories() as $sub)
-    @if($loop->iteration == 1)
-      <div class="tab-pane fade show active" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
-        @else
-      <div class="tab-pane fade" id="home{{preg_replace('/\s+/', '', $sub->category)}}" role="tabpanel" aria-labelledby="home-tab{{preg_replace('/\s+/', '', $sub->category)}}">
-        @endif
-        <?php $innerposts = $sub->getposts()->take(7); ?>
-        <div class="row">
-          <div class="col-7 ">
-            <div class="section-imagebox bg-section">
-              @if(isset($innerposts[0]))
-              <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
-              <div class="section-fisttableimage" style="background-image: url('/storage/{{ $innerposts[0]->image }}')">
-              </div>
-              </a>
-              <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}"><h4 style="padding:5px;">{{$innerposts[0]->title}}</h4></a>
-              @endif
-            </div>
-          </div>
-          <div class="col-5">
-            @foreach($innerposts as $inpost)
-            @continue($loop->iteration < 2)
-            @break($loop->iteration == 5)
-            <div class="row mb-3">
-              <div class="col-5">
-                <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
-                </div>
-                </a>
-              </div>
-              <div class="col-7">
-                <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
-                <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
-              </div>
-            </div>
-            @endforeach
-          </div>
-        </div>
-        <div class="row">
-          @foreach($innerposts as $inpost)
-            @continue($loop->iteration < 5)
-              @if(isset($inpost))
-              <div class="col mt-4 section-imagebox bg-section">
-                <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                  <div class="section-bottomtabeimage" style="background-image: url('/storage/{{ $inpost->image }}')">
-                  </div>
-                </a>
-                <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}" style="padding:5px;">{{$inpost->title}}</a>
-              </div>
-              @endif
-          @endforeach
-        </div>
-      </div>
-    @endforeach
-  </div>
-  </div>
-
-
-
-@endif
+  @endif
 @endforeach
 
+<div class="row mt-3 mb-3 d-flex text-section" style="">
+<div class="col-6">
+<h5>{{$sections->where('id', 6)->first()->section}}</h5>
+</div>
+<div class="col-6 mt-auto" style="text-align:right;">
+  <form id="search" action="{{ route('post.serach',['section' => $sections->where('id', 6)->first()] ) }}" method="post">
+    @csrf
+    <input type="hidden" name="serach" value="">
+
+    <input type="submit" class="btn-sectiontext" value="ZOBACZ WSZYSTKO">
+  </form>
+
+</div>
+<hr class="section-hr">
+
+<div class="row">
+
+  @foreach( $sections->where('id', 6)->first()->getcategories()->where('id', 118)->first()->getposts()->take(4) as $listpost)
+    <div class="col section-imagebox bg-section">
+      <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+      <div class="col-3 w-100 section-threepostsection d-flex" style="background-image: url('/storage/{{ $listpost->image }}')">
+      </div>
+      </a>
+      <div class="row" style="padding-left:10px;">
+        <a href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">
+        <b>{{$listpost->title}}</b>
+        </a>
+        <p>{{strip_tags(substr($listpost->postcontent, 0, 100))}}...</p>
+      </div>
+    </div>
+  @endforeach
+
+</div>
+</div>
 
 @endsection

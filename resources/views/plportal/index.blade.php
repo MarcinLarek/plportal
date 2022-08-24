@@ -1,23 +1,8 @@
 @extends('layouts.navbar.plportal')
+@section('styles')
+<link href="{{ asset('css/appplportal.css') }}" rel="stylesheet">
+@endsection
 @section('mainpage')
-<div class="row ads">
-  <div class="col w-100 text-center">
-  <!-- REKLAMA -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476273745604280"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-5476273745604280"
-     data-ad-slot="8175158206"
-     data-adtest="on"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  </div>
-</div>
-
 
 <div class="row">
     <div class="col-xl-8 col-l-8 col-md-12 col-sm-12 ">
@@ -104,8 +89,8 @@
 </div>
 
 <div class="row pt-2">
-<h3>Najnowsze</h3>
-<hr>
+<h3 class="text-section">Najnowsze</h3>
+<hr class="section-hr">
 </div>
 <div class="row pb-2">
   @foreach($posts as $post)
@@ -124,8 +109,8 @@
 
 @foreach($sections as $section)
 <div class="row">
-<h3>{{ $section->section }}</h3>
-<hr>
+<h3 class="text-section">{{ $section->section }}</h3>
+<hr class="section-hr">
 </div>
 <div class="row">
 
@@ -169,44 +154,5 @@
 </div>
 @endforeach
 
-<div class="row pt-5">
-  <div class="col-4 bottomleft d-flex flex-column justify-content-center">
-      <div class="">
-        <h5>Publikuj własne artykuły!</h5>
-      </div>
-      <div class="">
-        <a href="/user/register"> <button type="button" class="btn btn-primary"> ZARTEJESTRUJ SIĘ </button> </a>
-      </div>
-  </div>
-  <div class="pt-1 col-4 bottommiddle d-flex flex-column text-center">
-    Oferujemy Państwu rozbudowany interfejs publikacji tekstów. Oprócz możliwości formatowania tekstu, pozwala zamieszczać zdjęcia, ciekawe filmiki a czytelnicy mogą komentować zamieszczony artykuł. <a class="text-primary" href="#">czytaj więcej...</a>
-  </div>
-  <div class="col-4 bottomright d-flex flex-column justify-content-center">
-    <div class="">
-      <h5>Jeśli masz już konto</h5>
-    </div>
-    <div class="">
-      <a href="/user/register"> <button type="button" class="btn btn-danger"> ZALOGUJ SIĘ </button> </a>
-    </div>
-  </div>
-</div>
-
-<div class="row  ads pt-3 pb-4">
-  <div class="col w-100 text-center">
-  <!-- REKLAMA -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5476273745604280"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-5476273745604280"
-     data-ad-slot="8175158206"
-     data-adtest="on"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  </div>
-</div>
 
 @endsection

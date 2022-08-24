@@ -16,13 +16,19 @@ class PostController extends Controller
 
   public function index(Section $section)
   {
+
       $posts = $section->getposts()->sortDesc();
 
       $categorylist = Category::where('section_id',$section->id)
                                ->where('parent_category_id',null)
                                ->get();
       $firstpost = $posts->sortDesc()->first();
-      $posts = $posts->sortDesc()->slice(1)->take(28);
+      if ($section->id == 1) {
+        $posts = $posts->sortDesc()->slice(1)->take(37);
+      }
+      else {
+        $posts = $posts->sortDesc()->slice(1)->take(28);
+      }
       $sections = Section::get();
       $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
       return view($cleansection.'.index')
@@ -60,7 +66,7 @@ class PostController extends Controller
 
   public function category(Section $section, Category $category)
   {
-    $main = $category->getposts()->sortDesc()->paginate( 10 );
+    $main = $category->getposts()->sortDesc()->paginate( 20 );
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
@@ -76,6 +82,7 @@ class PostController extends Controller
     ->with('section', $cleansection)
     ->with('serachsection', $section)
     ->with('sections', $sections)
+    ->with('topcategory', $category->category)
     ->with('categories', $categorylist);
   }
 
@@ -105,7 +112,7 @@ class PostController extends Controller
       $loop++;
     }
 
-    $main = $main->paginate( 10 );
+    $main = $main->paginate( 20 );
     $posts = $section->getposts()->sortByDesc('id')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
@@ -120,6 +127,7 @@ class PostController extends Controller
     ->with('section', $cleansection)
     ->with('serachsection', $section)
     ->with('sections', $sections)
+    ->with('search', $search)
     ->with('categories', $categorylist);
   }
 

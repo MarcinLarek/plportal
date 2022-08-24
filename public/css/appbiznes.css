@@ -8,6 +8,18 @@
   font-family: Arial;
   align-items: flex-end;
 }
+
+.section-littleimage {
+  overflow: hidden;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: Arial;
+  align-items: flex-end;
+}
+
 .section-fisttableimage {
   overflow: hidden;
   height: 400px;
@@ -40,15 +52,41 @@
   font-family: Arial;
   align-items: flex-end;
 }
+.section-bordertop {
+  overflow: hidden;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: Arial;
+  align-items: flex-end;
+}
+
+.section-middletop {
+  overflow: hidden;
+  height: 180px;;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  font-family: Arial;
+  align-items: flex-end;
+}
+
+.titletest {
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 .btn-sectiontext {
   border: none;
   background-color: inherit;
-  color: #13345f;
+  color: #3a4774;
 }
 
 .bg-section {
-  background-color: #13345f;
+  background-color: #3a4774;
   color: #ffffff;
 }
 
@@ -60,17 +98,18 @@
   margin
 }
 .text-section {
-  color: #13345f;
+  color: #3a4774;
 }
 
 .nav-link:focus, .nav-link:hover {
-  color: #13345f;
+  color: #3a4774;
   background-color: #ffffff;
 }
 
 
 .active {
-  color: #13345f !important;
+  color: #3a4774;
+  background-color: #ffffff;
   font-weight: bold;
 }
 
@@ -82,7 +121,7 @@
 
 .navbaritem-section:hover, .navbaritem-section:focus  {
   background-color: #ffffff;
-  color: #13345f;
+  color: #3a4774;
 }
 
 .navbar-section > li > .dropdown-menu {
@@ -93,39 +132,57 @@
 
 .navbar-section > li > .dropdown-menu > .dropdown-item {
   background-color: #ffffff;
-  color: #13345f;
+  color: #3a4774;
   border: solid;
   border-width: 1px 1px 1px 1px;
-  border-color: #13345f;
+  border-color: #3a4774;
   font-size: medium;
   text-transform: uppercase;
   text-align: center;
 }
 .navbar-section > li > .dropdown-menu > .dropdown-item:hover {
-  background-color: #13345f;
+  background-color: #3a4774;
   color: #ffffff;
 }
 .bg-section {
-  background-color: #13345f;
+  background-color: #3a4774;
 }
 
 .dropdown-toggle {
   color: #ffffff;
-  background-color: #13345f;
+  background-color: #3a4774;
 }
 
 .dropdown-toggle:focus, .dropdown-toggle:hover {
-  color: #13345f;
+  color: #3a4774;
   background-color: #ffffff;
 }
 
 .section-rightlist {
-  height: 137px;
+  height: 110px;
 }
 
 hr.section-hr {
-    color: #13345f;
-    background-color: #13345f;
+    color: #3a4774;
+    background-color: #3a4774;
     border: 1px solid;
     opacity: 1;
+}
+
+.nav-pills > .pill-section {
+  background-color: #ffffff !important;
+  color: #27403b !important;
+  border: solid !important;
+  border-width: 1px 1px 1px 1px !important;
+  border-color: #27403b !important;
+  font-size: medium !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  margin-bottom: 5px;
+  border-radius: 0px;
+}
+
+.nav-pills > .active {
+  background-color: #27403b !important;
+  color: #ffffff !important;
 }

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('styles')
-<link href="{{ asset('css/appsalonpolityczny.css') }}" rel="stylesheet">
+<link href="{{ asset('css/appspoleczenstwo.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 
 <div class="container mt-3">
   <div class="row">
-    <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/salonpolitycznynav.png');">
+    <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/spoleczenstwonav.png');">
       <a href="{{route('index')}}" class="w-50 h-100"></a>
   </div>
 </div>
