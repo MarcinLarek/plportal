@@ -84,7 +84,6 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $imagePath = request('image')->store('uploads', 'public');
-        dd($imagePath = request('image')->store('uploads', 'public'));
         $optimizerChain = OptimizerChainFactory::create();
         $optimizerChain->optimize('storage/'.$imagePath);
 
