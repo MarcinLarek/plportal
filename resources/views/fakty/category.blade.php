@@ -27,7 +27,7 @@
               {{$post->created_at}}
               {{$post->author}}
             </div>
-            <a href="href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"">
+            <a href="href={{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
               <h6><b>{{$post->title}}</b></h6>
             </a>
             {{strip_tags(substr($post->postcontent, 0, 100))}}...
@@ -52,7 +52,7 @@
               {{$post->created_at}}
               {{$post->author}}
             </div>
-            <a href="href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"">
+            <a href="href={{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
               <h6><b>{{$post->title}}</b></h6>
             </a>
             {{strip_tags(substr($post->postcontent, 0, 100))}}...

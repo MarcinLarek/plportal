@@ -46,7 +46,7 @@
             <div class="row pt-4">
                 <div class="col-12">
                     <label for="postcontent" class="control-label">Zawartość posta:</label>
-                    <textarea name="postcontent" id="postcontent" value="{{ old('postcontent') }}" class="form-control"></textarea>
+                    <textarea name="postcontent" id="postcontent" value="{{ old('postcontent') }}" class="form-control">{{ old('postcontent') }}</textarea>
                     @error('postcontent')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
