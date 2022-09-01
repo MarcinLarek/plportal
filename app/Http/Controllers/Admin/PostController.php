@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\UpdateRequest;
 use Spatie\ImageOptimizer\OptimizerChainFactory;
 use Illuminate\Support\Facades\DB;
 use App\Models\Section;
@@ -59,9 +60,8 @@ class PostController extends Controller
               ->with('permissioncheck',$permissioncheck);
     }
 
-    public function update($post, PostRequest $request)
+    public function update($post, UpdateRequest $request)
     {
-
         $post = Post::find($post);
         $imagePath = request('image')->store('uploads', 'public');
         $optimizerChain = OptimizerChainFactory::create();
@@ -71,6 +71,7 @@ class PostController extends Controller
 
         $data = array(
          'title' => $request['title'],
+         'summary' => $request['summary'],
          'author' => $request['author'],
          'source' => $request['source'],
          'postcontent' => $request['postcontent'],
@@ -83,6 +84,7 @@ class PostController extends Controller
 
     public function store(PostRequest $request)
     {
+        $request['seo'] = $this->seo($request['seo']);
         $imagePath = request('image')->store('uploads', 'public');
         $optimizerChain = OptimizerChainFactory::create();
         $optimizerChain->optimize('storage/'.$imagePath);
@@ -91,6 +93,8 @@ class PostController extends Controller
         $data = array(
          'admin_id' => auth()->user()->id,
          'title' => $request['title'],
+         'seo' => $request['seo'],
+         'summary' => $request['summary'],
          'author' => $request['author'],
          'source' => $request['source'],
          'postcontent' => $request['postcontent'],
@@ -110,6 +114,26 @@ class PostController extends Controller
         return redirect()->back()->with('successalert', 'successalert');
     }
 
+    public function seo($title)
+    {
+      $title = strtolower($title);
+      $title = str_replace('ż', 'z', $title);
+      $title = str_replace('ą', 'a', $title);
+      $title = str_replace('ć', 'c', $title);
+      $title = str_replace('ę', 'e', $title);
+      $title = str_replace('ł', 'l', $title);
+      $title = str_replace('ń', 'n', $title);
+      $title = str_replace('ó', 'o', $title);
+      $title = str_replace('ś', 's', $title);
+      $title = str_replace('ź', 'z', $title);
+      $title = str_replace('.', '', $title);
+      $title = str_replace(',', '', $title);
+      $title = str_replace('?', '', $title);
+      $title = str_replace('!', '', $title);
+      $title = preg_replace('/\s+/', '-', $title);
+      return $title;
+    }
+
     public function delete($id)
     {
       $post = Post::find($id);
@@ -124,6 +148,19 @@ class PostController extends Controller
       $post->delete();
       return redirect()->route('admin.index')->with('successalert', 'successalert');
     }
+
+    public function seomaker()
+    {
+      $posts = Post::get();
+      foreach ($posts as $post) {
+        if ($post->seo == null) {
+          $post->seo =  $this->seo(substr($post->title, 0, 100));
+          $post->update();
+        }
+      }
+      return redirect()->route('admin.index')->with('successalert', 'successalert');
+    }
+
 
     public function temppostmaker()
     {/*
