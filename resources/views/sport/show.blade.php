@@ -5,9 +5,18 @@
       <div class="row">
         {{$post->created_at}} {{$admin->name}} {{substr($admin->surname, 0, 1)}}
       </div>
-        <div class="d-flex justify-content-center">
+        <div class="text-center">
             <h1> <b>{{$post->title}}</b> </h1>
         </div>
+        @if($post->summary != null)
+        <div class="row pt-3 pb-2">
+            <h5>{{$post->summary}}</h5>
+        </div>
+        @else
+        <div class="row pt-3 pb-2">
+            <h5>{{strip_tags(substr($post->postcontent, 0, 230))}}...</h5>
+        </div>
+        @endif
         <div class="row">
           <img src="/storage/{{$post->image}}" alt=""><br/>
           {!!$post->postcontent!!}

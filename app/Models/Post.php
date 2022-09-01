@@ -12,6 +12,8 @@ class Post extends Model
     protected $fillable = [
         'admin_id',
         'title',
+        'seo',
+        'summary',
         'author',
         'source',
         'postcontent',
@@ -20,12 +22,11 @@ class Post extends Model
         'reads',
 
     ];
-  //  Ta funkcja sprawia że posty są wyszukiwane po pytułach. Niestety przy dłuższych tytułach
-  // strona wywala błąd. Obecnie zamienione spowrotem na ID
-  //  public function getRouteKeyName()
-  // {
-  //     return 'title'; // db column name you would like to appear in the url.
-  // }
+
+    public function getRouteKeyName()
+   {
+       return 'seo'; // db column name you would like to appear in the url.
+   }
 
    public function category() {
       return $this->hasMany(PostCategories::class);

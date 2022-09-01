@@ -16,6 +16,8 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('seo');
+            $table->text('summary')->nullable();
             $table->unsignedBigInteger('admin_id');
             $table->string('author');
             $table->string('source');
