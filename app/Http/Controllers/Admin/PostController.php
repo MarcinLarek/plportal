@@ -151,6 +151,7 @@ class PostController extends Controller
 
     public function seomaker()
     {
+/*
       $posts = Post::get();
       foreach ($posts as $post) {
         if ($post->seo == null) {
@@ -159,6 +160,8 @@ class PostController extends Controller
         }
       }
       return redirect()->route('admin.index')->with('successalert', 'successalert');
+
+      */
     }
 
 
