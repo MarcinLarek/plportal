@@ -142,6 +142,8 @@ class PostController extends Controller
       $title = str_replace('^', '', $title);
       $title = str_replace('&', '', $title);
       $title = str_replace('*', '', $title);
+      $title = str_replace('”', '', $title);
+      $title = str_replace('„', '', $title);
       $title = preg_replace('/\s+/', '-', $title);
       return $title;
     }
