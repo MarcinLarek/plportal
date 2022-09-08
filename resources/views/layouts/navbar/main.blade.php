@@ -1,5 +1,8 @@
-<nav class="navbar-expand-xxl bg-section">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+<nav class="navbar-expand-xxl sticky-top bg-section">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><img class="image-fluid" src="/storage/hamburrger.png" alt=""></span>
+  </button> <b class="navbar-toggler"> <a href="{{route('index')}}">PRESSGLOBAL.PL</a> </b>
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
         <ul class="navbar-nav navbar-main-nav navbar-section mx-auto">
           @foreach($sections as $section)
             <li class="nav-item dropdown">
