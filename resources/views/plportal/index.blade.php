@@ -72,10 +72,10 @@
         @continue($loop->iteration < 16) @break($loop->iteration == 23)
         @if($loop->iteration < 18)
         <div class="row pt-1">
-            <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
+            <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-5">
                 <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 mainpagerightlist"></a>
             </div>
-            <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-12 rightlisttext">
+            <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-7 rightlisttext">
                 <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><b>{{$post->title}}</b></a>
             </div>
         </div>
@@ -95,7 +95,7 @@
 <div class="row pb-2">
   @foreach($posts as $post)
   @continue($loop->iteration < 13)
-  <div class="col-3">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 col-12">
     <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
     <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$post->image}}')">
       <div class="pt-1 pb-1 ps-2 pe-2" style="background-color:rgba(0, 0, 0, 0.5);">
@@ -117,7 +117,7 @@
   <div class="col-xl-8 col-l-8 col-md-12 col-sm-12 col-12">
     <div class="row">
       @foreach ($section->getposts()->take(9) as $post)
-        <div class="col-4 mb-3">
+        <div class="col-xl-4 col-l-4 col-md-12 col-sm-12 col-12 mb-3">
           <a href="{{ route('post.show', ['post' => $post, 'section' => $section]) }}">
           <div class="mb-2 col-3 w-100 squarecolumns d-flex" style="background-image: url('/storage/{{$post->image}}')">
             <div class="pt-1 pb-1 ps-2 pe-2" style="background-color:rgba(0, 0, 0, 0.5);">
@@ -135,10 +135,10 @@
       @continue($loop->iteration < 10)
       @if($loop->iteration == 10)
       <div class="row pt-1">
-          <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
+          <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-5">
               <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 mainpagerightlist"></a>
           </div>
-          <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-12 rightlisttext">
+          <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-7 rightlisttext">
               <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><b>{{$post->title}}</b></a>
           </div>
       </div>
