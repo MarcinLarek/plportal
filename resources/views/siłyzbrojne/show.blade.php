@@ -66,8 +66,4 @@
 
 
 </div>
-
-<div class="row pt-2">
-  <b>Oceń artykuł:</b>
-</div>
 @endsection

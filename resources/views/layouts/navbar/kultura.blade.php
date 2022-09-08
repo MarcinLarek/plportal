@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container mt-3">
-  <div class="row">
+  <div class="row d-none d-sm-block d-md-block">
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/kulturanav.png');">
       <a href="{{route('index')}}" class="w-50 h-100"></a>
   </div>
@@ -18,8 +18,13 @@
   </form>
 </div>
 
+
 <nav class="navbar-expand-sm bg-section mt-1 mb-3">
-  <div class="collapse navbar-collapse">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent2" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><img class="image-fluid" src="/storage/hamburrger.png" alt=""></span>
+  </button> <b class="navbar-toggler"> Kategorie </b>
+
+  <div class="collapse navbar-collapse" id="navbarToggleExternalContent2">
       <ul class="navbar-nav navbar-section mx-auto">
         <li class="nav-item">
           <a class="nav-link navbaritem-section" href="{{ route( 'post.index', ['section' => $serachsection] ) }}"> <b>Strona Główna</b> </a>

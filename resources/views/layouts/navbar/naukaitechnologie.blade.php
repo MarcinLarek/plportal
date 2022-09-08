@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="container mt-3">
-  <div class="row">
+  <div class="row d-none d-sm-block d-md-block">
     <div class="col-12 d-flex  justify-content-between headerimage w-100" style="background-image:  url('/storage/naukaitechnologienav.png');">
       <a href="{{route('index')}}" class="w-50 h-100"></a>
   </div>
@@ -17,18 +17,24 @@
     <input type="submit" class="bg-section" value="Szukaj">
   </form>
 </div>
+
+
 <nav class="navbar-expand-sm bg-section mt-1 mb-3">
-  <div class="collapse navbar-collapse">
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent2" aria-controls="navbarToggleExternalContent2" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><img class="image-fluid" src="/storage/hamburrger.png" alt=""></span>
+  </button> <b class="navbar-toggler"> Kategorie </b>
+
+  <div class="collapse navbar-collapse" id="navbarToggleExternalContent2">
       <ul class="navbar-nav navbar-section mx-auto">
         <li class="nav-item">
           <a class="nav-link navbaritem-section" href="{{ route( 'post.index', ['section' => $serachsection] ) }}"> <b>Strona Główna</b> </a>
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 1)->first(), 'section' => $categories->where('id', 1)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 1)->first(), 'section' => $categories->where('id', 1)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               {{$categories->where('id', 1)->first()->category}}
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 1)->first(), 'section' => $categories->where('id', 1)->first()->getsection()]) }}">
                 {{$categories->where('id', 1)->first()->category}}
             </a>
@@ -41,10 +47,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 2)->first(), 'section' => $categories->where('id', 2)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 2)->first(), 'section' => $categories->where('id', 2)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               {{$categories->where('id', 2)->first()->category}}
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 2)->first(), 'section' => $categories->where('id', 2)->first()->getsection()]) }}">
                 {{$categories->where('id', 2)->first()->category}}
             </a>
@@ -57,10 +63,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" role="button" data-bs-toggle="dropdown">
               Technologia & Gry
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 3)->first(), 'section' => $categories->where('id', 3)->first()->getsection()]) }}">
                 {{$categories->where('id', 3)->first()->category}}
             </a>
@@ -71,10 +77,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 5)->first(), 'section' => $categories->where('id', 5)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 5)->first(), 'section' => $categories->where('id', 5)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               {{$categories->where('id', 5)->first()->category}}
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 5)->first(), 'section' => $categories->where('id', 5)->first()->getsection()]) }}">
                 {{$categories->where('id', 5)->first()->category}}
             </a>
@@ -87,10 +93,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 6)->first(), 'section' => $categories->where('id', 6)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 6)->first(), 'section' => $categories->where('id', 6)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               {{$categories->where('id', 6)->first()->category}}
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 6)->first(), 'section' => $categories->where('id', 6)->first()->getsection()]) }}">
                 {{$categories->where('id', 6)->first()->category}}
             </a>
@@ -103,10 +109,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 7)->first(), 'section' => $categories->where('id', 7)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 7)->first(), 'section' => $categories->where('id', 7)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               Technologie
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 7)->first(), 'section' => $categories->where('id', 7)->first()->getsection()]) }}">
                 {{$categories->where('id', 7)->first()->category}}
             </a>
@@ -119,10 +125,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 8)->first(), 'section' => $categories->where('id', 8)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 8)->first(), 'section' => $categories->where('id', 8)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               {{$categories->where('id', 8)->first()->category}}
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 8)->first(), 'section' => $categories->where('id', 8)->first()->getsection()]) }}">
                 {{$categories->where('id', 8)->first()->category}}
             </a>
@@ -135,10 +141,10 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a id="navbarDropdown" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 9)->first(), 'section' => $categories->where('id', 9)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
+          <a id="navbarDropdown2" class="nav-link navbaritem-section dropdown-toggle" href="{{ route('post.category', ['category' => $categories->where('id', 9)->first(), 'section' => $categories->where('id', 9)->first()->getsection()]) }}" role="button" data-bs-toggle="dropdown">
               Środowisko
           </a>
-          <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu " aria-labelledby="navbarDropdown2">
             <a class="dropdown-item border-solid" href="{{ route('post.category', ['category' => $categories->where('id', 9)->first(), 'section' => $categories->where('id', 9)->first()->getsection()]) }}">
                 {{$categories->where('id', 9)->first()->category}}
             </a>
