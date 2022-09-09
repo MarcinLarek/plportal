@@ -161,9 +161,9 @@
         @endif
         <?php $innerposts = $sub->getposts()->take(13); ?>
         <div class="row">
-          <div class="col-7 ">
+          <div class="col-xl-7 col-l-7 col-md-12 col-sm-12 ">
             <div class="row">
-              <div class="col-8">
+              <div class="col-xl-8 col-l-8 col-md-12 col-sm-12">
                 <div class="section-imagebox titletest bg-section">
                   @if(isset($innerposts[0]))
                   <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
@@ -174,18 +174,18 @@
                   @endif
                 </div>
               </div>
-              <div class="col-4">
+              <div class="col-xl-4 col-l-4 col-md-12 col-sm-12">
                 @foreach($innerposts as $inpost)
                 @continue($loop->iteration < 6)
                 @break($loop->iteration == 8)
                 <div class="mb-2 section-imagebox bg-section">
                   <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                  <div class="col-3 w-100 section-righttableimage d-flex" style="background-image: url('/storage/{{ $post->image }}')">
+                  <div class="col-3 w-100 section-righttableimage d-flex" style="background-image: url('/storage/{{ $inpost->image }}')">
                   </div>
                   </a>
                   <div class="row titletest" style="padding-left:10px;">
                     <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                    {{$post->title}}
+                    {{$inpost->title}}
                     </a>
                   </div>
                 </div>
@@ -198,47 +198,47 @@
               @break($loop->iteration == 11)
               <div class="col section-imagebox bg-section">
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                <div class="col-3 w-100 section-righttableimage d-flex" style="background-image: url('/storage/{{ $post->image }}')">
+                <div class="col-3 w-100 section-righttableimage d-flex" style="background-image: url('/storage/{{ $inpost->image }}')">
                 </div>
                 </a>
-                <div class="row titletest" style="padding-left:10px;">
+                <div class="row " style="padding-left:10px;">
                   <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                  {{$post->title}}
+                  {{$inpost->title}}
                   </a>
                 </div>
               </div>
               @endforeach
             </div>
             <div class="row mb-2">
-              @foreach($innerposts as $inpost)
+              @foreach($innerposts as $inpost2)
               @continue($loop->iteration < 11)
               @break($loop->iteration == 14)
               <div class="col section-imagebox bg-section">
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                <div class="col-3 w-100 section-righttableimage d-flex" style="background-image: url('/storage/{{ $post->image }}')">
+                <div class="col-3 w-100 section-righttableimage d-flex" style="background-image: url('/storage/{{ $inpost->image }}')">
                 </div>
                 </a>
-                <div class="row titletest" style="padding-left:10px;">
+                <div class="row " style="padding-left:10px;">
                   <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
-                  {{$post->title}}
+                  {{$inpost->title}}
                   </a>
                 </div>
               </div>
               @endforeach
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
             @foreach($innerposts as $inpost)
             @continue($loop->iteration < 2)
             @break($loop->iteration == 6)
             <div class="row mb-3">
-              <div class="col-5">
+              <div class="col-xl-5 col-l-5 col-md-5 col-sm-5">
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
                 <div class="section-righttableimagemorergiht" style="background-image: url('/storage/{{ $inpost->image }}')">
                 </div>
                 </a>
               </div>
-              <div class="col-7">
+              <div class="col-xl-7 col-l-7 col-md-7 col-sm-7">
                 <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
                 <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
               </div>
@@ -258,42 +258,44 @@
 
 
 <div class="row mb-3 d-flex text-section" style="">
-<div class="col-6">
+<div class="col-xl-6 col-l-6 col-md-12 col-sm-12">
 <h5>Z ŻYCIA SEJMU</h5>
 </div>
 <hr class="section-hr">
+
 <div class="row mt-3">
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.sejm.gov.pl/Sejm8.nsf/kluby.xsp"><img class="imagesejm" src="/storage/salonikony/1.png" alt=""></a>
     <h4>KOŁA PARLAMENTARLNE</h4>
   </div>
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.sejm.gov.pl/Sejm8.nsf/poslowie.xsp?type=A"><img class="imagesejm" src="/storage/salonikony/2.svg" alt=""></a>
     <h4>SKŁAD RZĄDU</h4>
   </div>
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.sejm.gov.pl/Sejm8.nsf/agent.xsp?symbol=KOMISJE_STALE&Nrkadencji=8"><img class="imagesejm" src="/storage/salonikony/3.png" alt=""></a>
     <h4>KOMISJE SEJMOWE</h4>
   </div>
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.sejm.gov.pl/sejm8.nsf/PorzadekObrad.xsp?documentId=EA6939B18D11F9C4C1258441003DB935"><img class="imagesejm" src="/storage/salonikony/4.png" alt=""></a>
     <h4>Z ŻYCIA SEJMU</h4>
   </div>
 </div>
+
 <div class="row mt-5">
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.sejm.gov.pl/Sejm8.nsf/proces.xsp"><img class="imagesejm" src="/storage/salonikony/5.png" alt=""></a>
     <h4>PROCES LEGISLACYJNY</h4>
   </div>
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.sejm.gov.pl/Sejm8.nsf/agent.xsp?symbol=PROJNOWEUST&NrKadencji=8&Kol=D&Typ=UST"><img class="imagesejm" src="/storage/salonikony/6.svg" alt=""></a>
     <h4>PROJEKTY USTAW</h4>
   </div>
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://ec.europa.eu/info/index_pl"><img class="imagesejm" src="/storage/salonikony/7.jpg" alt=""></a>
     <h4>KOMISJA EUROPEJSKA</h4>
   </div>
-  <div class="col-3 text-center text-dark">
+  <div class="col-xl-3 col-l-3 col-md-12 col-sm-12 text-center text-dark">
     <a href="https://www.europarl.europa.eu/portal/pl"><img class="imagesejm" src="/storage/salonikony/8.png" alt=""></a>
     <h4>PARLAMENT EUROPEJSKI</h4>
   </div>
@@ -314,7 +316,7 @@
     </div>
   <hr class="section-hr">
     <div class="row">
-      <div class="col-7 ">
+      <div class="col-xl-7 col-l-7 col-md-12 col-sm-12 ">
         <div class="section-imagebox bg-section">
           @if(isset($innerposts[0]))
           <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
@@ -325,18 +327,18 @@
           @endif
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
         @foreach($innerposts as $inpost)
         @continue($loop->iteration < 2)
         @break($loop->iteration == 5)
         <div class="row mb-3">
-          <div class="col-5">
+          <div class="col-xl-5 col-l-5 col-md-5 col-sm-5">
             <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
             <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
             </div>
             </a>
           </div>
-          <div class="col-7">
+          <div class="col-xl-7 col-l-7 col-md-7 col-sm-7">
             <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
             <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
           </div>

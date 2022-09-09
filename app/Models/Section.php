@@ -38,7 +38,7 @@ class Section extends Model
       }
       $posttoshow = Post::take(0)->get();
       foreach ($filteredcategories as $filtcat) {
-        $temp = Post::where('id', $filtcat->post_id)->get();
+        $temp = Post::where('id', $filtcat->post_id)->orderByDesc('created_at')->get();
         foreach ($temp as $tempp) {
           $posttoshow->push($tempp);
         }

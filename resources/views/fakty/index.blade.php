@@ -155,7 +155,7 @@
 
 
 <div class="row mt-2">
-<div class="col-3">
+<div class="col-xl-3 col-l-3 col-md-12 col-sm-12">
   <div class="row">
     @foreach($posts as $post)
     @continue($loop->iteration < 9)
@@ -176,12 +176,12 @@
     @endforeach
   </div>
 </div>
-<div class="col-9">
+<div class="col-xl-9 col-l-9 col-md-12 col-sm-12">
   @foreach($posts as $post)
   @continue($loop->iteration < 12)
   @break($loop->iteration == 13)
   <div class="row ">
-    <div class="col section-imagebox bg-section">
+    <div class="col d-none d-sm-block d-md-block section-imagebox bg-section">
       <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
       <div class="col-3 w-100 section-bigpost d-flex" style="background-image: url('/storage/{{ $post->image }}')">
       </div>
@@ -236,12 +236,12 @@
 </div>
 
 <div class="row mt-2">
-  <div class="col-9">
+  <div class="col-xl-9 col-l-9 col-md-12 col-sm-12">
     @foreach($posts as $post)
     @continue($loop->iteration < 24)
     @break($loop->iteration == 25)
     <div class="row ">
-      <div class="col section-imagebox bg-section">
+      <div class="col d-none d-sm-block d-md-block section-imagebox bg-section">
         <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
         <div class="col-3 w-100 section-bigpost d-flex" style="background-image: url('/storage/{{ $post->image }}')">
         </div>
@@ -255,7 +255,7 @@
     </div>
     @endforeach
   </div>
-<div class="col-3">
+<div class="col-xl-3 col-l-3 col-md-12 col-sm-12">
   <div class="row">
     @foreach($posts as $post)
     @continue($loop->iteration < 21)
