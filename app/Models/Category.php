@@ -29,10 +29,10 @@ class Category extends Model
     }
 
     public function getposts() {
-      $categorylist = PostCategories::where('category_id', $this->id)->get();
+      $categorylist = PostCategories::where('category_id', $this->id)->orderByDesc('created_at')->get();
       $subcategory = $this->getsubcategories();
       foreach ($subcategory as $cat) {
-        $temp = PostCategories::where('category_id', $cat->id)->get();
+        $temp = PostCategories::where('category_id', $cat->id)->orderByDesc('created_at')->get();
         if($temp != null) {
           foreach ($temp as $temp2){
             $categorylist->push($temp2);
@@ -44,13 +44,12 @@ class Category extends Model
 
       $main = Post::take(0)->get();
       foreach ($categorylist as $catli ) {
-        $temp1 = Post::where('id',$catli->post_id)->get();
+        $temp1 = Post::where('id',$catli->post_id)->orderByDesc('created_at')->get();
         foreach ($temp1 as $tempp1) {
           $main->push($tempp1);
         }
       }
       $main = $main->unique();
-
       return $main;
     }
 

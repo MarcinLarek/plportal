@@ -62,10 +62,10 @@
         @continue($loop->iteration < 5) @break($loop->iteration == 11)
         @if($loop->iteration < 7)
         <div class="row pt-1">
-            <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
+            <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-xl-5 col-l-5 col-md-12 col-sm-12 col-12">
                 <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 section-rightlist"></a>
             </div>
-            <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-12 rightlisttext">
+            <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-xl-7 col-l-7 col-md-12 col-sm-12 col-12 rightlisttext">
                 <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><b class="text-section">{{$post->title}}</b></a>
             </div>
         </div>
@@ -128,25 +128,25 @@
         </div>
       <hr class="section-hr">
         <div class="row">
-          <div class="col-5">
+          <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
             @foreach($innerposts as $inpost)
             @continue($loop->iteration < 2)
             @break($loop->iteration == 5)
             <div class="row mb-3">
-              <div class="col-5">
+              <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
                 <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
                 </div>
                 </a>
               </div>
-              <div class="col-7">
+              <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
                 <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
                 <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
               </div>
             </div>
             @endforeach
           </div>
-          <div class="col-7 ">
+          <div class="col-xl-7 col-l-7 col-md-12 col-sm-12 ">
             <div class="section-imagebox bg-section">
               @if(isset($innerposts[0]))
               <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
@@ -217,7 +217,7 @@
         @endif
         <?php $innerposts = $sub->getposts()->take(7); ?>
         <div class="row">
-          <div class="col-7 ">
+          <div class="col-xl-7 col-l-7 col-md-12 col-sm-12 ">
             <div class="section-imagebox bg-section">
               @if(isset($innerposts[0]))
               <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">
@@ -228,18 +228,18 @@
               @endif
             </div>
           </div>
-          <div class="col-5">
+          <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
             @foreach($innerposts as $inpost)
             @continue($loop->iteration < 2)
             @break($loop->iteration == 5)
             <div class="row mb-3">
-              <div class="col-5">
+              <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
                 <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
                 </div>
                 </a>
               </div>
-              <div class="col-7">
+              <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
                 <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
                 <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
               </div>
@@ -309,25 +309,25 @@
       @endif
       <?php $innerposts = $sub->getposts()->take(7); ?>
       <div class="row">
-        <div class="col-5">
+        <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
           @foreach($innerposts as $inpost)
           @continue($loop->iteration < 2)
           @break($loop->iteration == 5)
           <div class="row mb-3">
-            <div class="col-5">
+            <div class="col-xl-5 col-l-5 col-md-12 col-sm-12">
               <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
               <div class="section-righttableimage" style="background-image: url('/storage/{{ $inpost->image }}')">
               </div>
               </a>
             </div>
-            <div class="col-7">
+            <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
               <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
               <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
             </div>
           </div>
           @endforeach
         </div>
-        <div class="col-7 ">
+        <div class="col-xl-7 col-l-7 col-md-12 col-sm-12 ">
           <div class="section-imagebox bg-section">
             @if(isset($innerposts[0]))
             <a href="{{ route('post.show', ['post' => $innerposts[0], 'section' => $innerposts[0]->getsection()]) }}">

@@ -43,7 +43,7 @@ class PostController extends Controller
   public function show(Section $section, Post $post)
   {
 
-    $posts = $section->getposts()->sortByDesc('id')->take(10);
+    $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $post->reads++;
     $post->update();
@@ -67,7 +67,7 @@ class PostController extends Controller
   public function category(Section $section, Category $category)
   {
     $main = $category->getposts()->sortDesc()->paginate( 20 );
-    $posts = $section->getposts()->sortByDesc('id')->take(10);
+    $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
                              ->where('parent_category_id',null)
@@ -113,7 +113,7 @@ class PostController extends Controller
     }
 
     $main = $main->paginate( 20 );
-    $posts = $section->getposts()->sortByDesc('id')->take(10);
+    $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categorylist = Category::where('section_id',$section->id)
                              ->where('parent_category_id',null)
