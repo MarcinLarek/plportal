@@ -31,13 +31,24 @@ class PostController extends Controller
       }
       $sections = Section::get();
       $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
-      return view($cleansection.'.index')
-       ->with('firstpost', $firstpost)
-       ->with('posts', $posts)
-       ->with('categories', $categorylist)
-       ->with('serachsection', $section)
-       ->with('section', $cleansection)
-       ->with('sections', $sections);
+      try {
+        return view($cleansection.'.index')
+         ->with('firstpost', $firstpost)
+         ->with('posts', $posts)
+         ->with('categories', $categorylist)
+         ->with('serachsection', $section)
+         ->with('section', $cleansection)
+         ->with('sections', $sections);
+      } catch (\Exception $e) {
+        return view('basic.index')
+         ->with('firstpost', $firstpost)
+         ->with('posts', $posts)
+         ->with('categories', $categorylist)
+         ->with('serachsection', $section)
+         ->with('section', $cleansection)
+         ->with('sections', $sections);
+      }
+
   }
 
   public function show(Section $section, Post $post)
@@ -53,15 +64,28 @@ class PostController extends Controller
     $sections = Section::get();
     $admin = Admin::where('id',$post->admin_id)->first();
     $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
-    return view($cleansection.'.show')
-    ->with('post', $post)
-    ->with('posts', $posts)
-    ->with('topposts', $topposts)
-    ->with('section', $cleansection)
-    ->with('serachsection', $section)
-    ->with('sections', $sections)
-    ->with('admin', $admin)
-    ->with('categories', $categorylist);
+    try {
+      return view($cleansection.'.show')
+      ->with('post', $post)
+      ->with('posts', $posts)
+      ->with('topposts', $topposts)
+      ->with('section', $cleansection)
+      ->with('serachsection', $section)
+      ->with('sections', $sections)
+      ->with('admin', $admin)
+      ->with('categories', $categorylist);
+    } catch (\Exception $e) {
+      return view('basic.show')
+      ->with('post', $post)
+      ->with('posts', $posts)
+      ->with('topposts', $topposts)
+      ->with('section', $cleansection)
+      ->with('serachsection', $section)
+      ->with('sections', $sections)
+      ->with('admin', $admin)
+      ->with('categories', $categorylist);
+    }
+
   }
 
   public function category(Section $section, Category $category)
@@ -75,15 +99,28 @@ class PostController extends Controller
     $sections = Section::get();
     $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
 
-    return view($cleansection.'.category')
-    ->with('main', $main)
-    ->with('posts', $posts)
-    ->with('topposts', $topposts)
-    ->with('section', $cleansection)
-    ->with('serachsection', $section)
-    ->with('sections', $sections)
-    ->with('topcategory', $category->category)
-    ->with('categories', $categorylist);
+    try {
+      return view($cleansection.'.category')
+      ->with('main', $main)
+      ->with('posts', $posts)
+      ->with('topposts', $topposts)
+      ->with('section', $cleansection)
+      ->with('serachsection', $section)
+      ->with('sections', $sections)
+      ->with('topcategory', $category->category)
+      ->with('categories', $categorylist);
+    } catch (\Exception $e) {
+      return view('basic.category')
+      ->with('main', $main)
+      ->with('posts', $posts)
+      ->with('topposts', $topposts)
+      ->with('section', $cleansection)
+      ->with('serachsection', $section)
+      ->with('sections', $sections)
+      ->with('topcategory', $category->category)
+      ->with('categories', $categorylist);
+    }
+
   }
 
   public function search(Section $section, Request $request)
@@ -120,15 +157,28 @@ class PostController extends Controller
                              ->get();
     $sections = Section::get();
     $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
-    return view($cleansection.'.category')
-    ->with('main', $main)
-    ->with('posts', $posts)
-    ->with('topposts', $topposts)
-    ->with('section', $cleansection)
-    ->with('serachsection', $section)
-    ->with('sections', $sections)
-    ->with('search', $search)
-    ->with('categories', $categorylist);
+    try {
+      return view($cleansection.'.category')
+      ->with('main', $main)
+      ->with('posts', $posts)
+      ->with('topposts', $topposts)
+      ->with('section', $cleansection)
+      ->with('serachsection', $section)
+      ->with('sections', $sections)
+      ->with('search', $search)
+      ->with('categories', $categorylist);
+    } catch (\Exception $e) {
+      return view('basic.category')
+      ->with('main', $main)
+      ->with('posts', $posts)
+      ->with('topposts', $topposts)
+      ->with('section', $cleansection)
+      ->with('serachsection', $section)
+      ->with('sections', $sections)
+      ->with('search', $search)
+      ->with('categories', $categorylist);
+    }
+
   }
 
 }
