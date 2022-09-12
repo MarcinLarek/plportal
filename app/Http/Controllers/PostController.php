@@ -22,18 +22,16 @@ class PostController extends Controller
       $categorylist = Category::where('section_id',$section->id)
                                ->where('parent_category_id',null)
                                ->get();
-      $firstpost = $posts->sortDesc()->first();
       if ($section->id == 1) {
-        $posts = $posts->sortDesc()->slice(1)->take(37);
+        $posts = $posts->sortDesc()->take(37);
       }
       else {
-        $posts = $posts->sortDesc()->slice(1)->take(28);
+        $posts = $posts->sortDesc()->take(28);
       }
       $sections = Section::get();
       $cleansection = str_replace(',','',strtolower(preg_replace('/\s+/', '', $section->section)));
       try {
         return view($cleansection.'.index')
-         ->with('firstpost', $firstpost)
          ->with('posts', $posts)
          ->with('categories', $categorylist)
          ->with('serachsection', $section)
@@ -41,7 +39,6 @@ class PostController extends Controller
          ->with('sections', $sections);
       } catch (\Exception $e) {
         return view('basic.index')
-         ->with('firstpost', $firstpost)
          ->with('posts', $posts)
          ->with('categories', $categorylist)
          ->with('serachsection', $section)

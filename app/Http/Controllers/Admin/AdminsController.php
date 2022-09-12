@@ -44,7 +44,7 @@ class AdminsController extends Controller
           'surname' => ['required','max:100'],
           'password' => ['max:100'],
           'global_privileges' => ['required'],
-          'email' => ['required','max:100']
+          'email' => ['required', 'string', 'email', 'max:255']
       ]);
       if ($request['password'] == null) {
           $data = array(
@@ -73,12 +73,12 @@ class AdminsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-          'login' => ['required','max:100'],
+          'login' => ['required','max:100','unique:admins'],
           'name' => ['required','max:100'],
           'surname' => ['required','max:100'],
           'password' => ['max:100'],
           'global_privileges' => ['required'],
-          'email' => ['required','max:100']
+          'email' => ['required', 'string', 'email', 'max:255','unique:admins']
       ]);
       $data = array(
   'login' => $request['login'],
@@ -106,7 +106,6 @@ class AdminsController extends Controller
     {
       $admin = Admin::find($id);
       $admin->delete();
-      $admins = Admin::all();
       return redirect()->route('admin.admins')->with('successalert', 'successalert');
     }
 
