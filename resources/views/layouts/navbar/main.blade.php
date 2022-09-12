@@ -26,3 +26,8 @@
         </ul>
     </div>
 </nav>
+@if(session()->has('successalert'))
+<div class="alert alert-success">
+    <h1>Pomyślnie zapisano dane</h1>
+</div>
+@endif

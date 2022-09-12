@@ -23,8 +23,9 @@ class Section extends Model
     }
 
     public function getcategories() {
-      $categorylist = Category::where('section_id',$this->id)->get();
-       return $categorylist;
+      return $this->hasMany(Category::class);
+      //$categorylist = Category::where('section_id',$this->id)->get();
+      // return $categorylist;
     }
 
     public function getposts() {

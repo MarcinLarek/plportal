@@ -2,11 +2,6 @@
 @section('content')
 @if(auth()->user()->global_privileges==1 || auth()->user()->ifmenages($permissioncheck->id))
 <div class="container">
-    @if(session()->has('successalert'))
-    <div class="alert alert-success">
-        <h1>Pomyślnie zapisano dane</h1>
-    </div>
-    @endif
     <div class="pt-4 ">
       <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a> <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a>
     </div>

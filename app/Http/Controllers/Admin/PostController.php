@@ -23,7 +23,7 @@ class PostController extends Controller
         $sections = Section::get();
         $tempsection = Section::where('section', $section)->first();
         $category = Category::where('section_id',$tempsection['id'])->get();
-        return view('admin.list')
+        return view('admin.posts.list')
               ->with('sections', $sections)
               ->with('section', $section)
               ->with('posts', $posts)
@@ -37,7 +37,7 @@ class PostController extends Controller
         $sections = Section::get();
         $tempsection = Section::where('section', $section)->first();
         $category = Category::where('section_id',$tempsection['id'])->get();
-        return view('admin.create')
+        return view('admin.posts.create')
               ->with('sections', $sections)
               ->with('section', $section)
               ->with('category', $category)
@@ -53,7 +53,7 @@ class PostController extends Controller
         $sections = Section::get();
         $tempsection = Section::where('section', $section)->first();
         $category = Category::where('section_id',$tempsection['id'])->get();
-        return view('admin.edit')
+        return view('admin.posts.edit')
               ->with('post', $post)
               ->with('sections', $sections)
               ->with('section', $section)
@@ -102,8 +102,8 @@ class PostController extends Controller
          'image' => $imagePath,
        );
 
-       Post::create($data);
-       $post = Post::latest()->first();
+       $post = Post::create($data);
+       //$post = Post::latest()->first();
        foreach ($request['category'] as $cat) {
           $data = array(
             'post_id' => $post['id'],
@@ -153,7 +153,7 @@ class PostController extends Controller
     {
       $post = Post::find($id);
       $sections = Section::get();
-      return view('admin.postdelete')
+      return view('admin.posts.postdelete')
       ->with('post', $post)
       ->with('sections', $sections);
     }
@@ -166,13 +166,16 @@ class PostController extends Controller
 
     public function seomaker()
     {
+      //Dla postów posiadających złe SEO
       $posts = Post::get();
       foreach ($posts as $post) {
         $post->seo =  $this->seo($post->seo);
         $post->update();
       }
       return redirect()->route('admin.index')->with('successalert', 'successalert');
-/*
+
+      //Dla postów nie posiadających wclae SEO
+      /*
       $posts = Post::get();
       foreach ($posts as $post) {
         if ($post->seo == null) {
