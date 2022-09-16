@@ -19,7 +19,7 @@ class PostController extends Controller
 
       $posts = $section->getposts()->sortDesc();
 
-      $categorylist = Category::where('section_id',$section->id)
+      $categories = Category::where('section_id',$section->id)
                                ->where('parent_category_id',null)
                                ->get();
       if ($section->id == 1) {
@@ -33,14 +33,14 @@ class PostController extends Controller
       try {
         return view($cleansection.'.index')
          ->with('posts', $posts)
-         ->with('categories', $categorylist)
+         ->with('categories', $categories)
          ->with('serachsection', $section)
          ->with('section', $cleansection)
          ->with('sections', $sections);
       } catch (\Exception $e) {
         return view('basic.index')
          ->with('posts', $posts)
-         ->with('categories', $categorylist)
+         ->with('categories', $categories)
          ->with('serachsection', $section)
          ->with('section', $cleansection)
          ->with('sections', $sections);
@@ -55,7 +55,7 @@ class PostController extends Controller
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $post->reads++;
     $post->update();
-    $categorylist = Category::where('section_id',$section->id)
+    $categories = Category::where('section_id',$section->id)
                              ->where('parent_category_id',null)
                              ->get();
     $sections = Section::get();
@@ -70,7 +70,7 @@ class PostController extends Controller
       ->with('serachsection', $section)
       ->with('sections', $sections)
       ->with('admin', $admin)
-      ->with('categories', $categorylist);
+      ->with('categories', $categories);
     } catch (\Exception $e) {
       return view('basic.show')
       ->with('post', $post)
@@ -80,7 +80,7 @@ class PostController extends Controller
       ->with('serachsection', $section)
       ->with('sections', $sections)
       ->with('admin', $admin)
-      ->with('categories', $categorylist);
+      ->with('categories', $categories);
     }
 
   }
@@ -90,7 +90,7 @@ class PostController extends Controller
     $main = $category->getposts()->sortDesc()->paginate( 20 );
     $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
-    $categorylist = Category::where('section_id',$section->id)
+    $categories = Category::where('section_id',$section->id)
                              ->where('parent_category_id',null)
                              ->get();
     $sections = Section::get();
@@ -105,7 +105,7 @@ class PostController extends Controller
       ->with('serachsection', $section)
       ->with('sections', $sections)
       ->with('topcategory', $category->category)
-      ->with('categories', $categorylist);
+      ->with('categories', $categories);
     } catch (\Exception $e) {
       return view('basic.category')
       ->with('main', $main)
@@ -115,7 +115,7 @@ class PostController extends Controller
       ->with('serachsection', $section)
       ->with('sections', $sections)
       ->with('topcategory', $category->category)
-      ->with('categories', $categorylist);
+      ->with('categories', $categories);
     }
 
   }
@@ -149,7 +149,7 @@ class PostController extends Controller
     $main = $main->paginate( 20 );
     $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
-    $categorylist = Category::where('section_id',$section->id)
+    $categories = Category::where('section_id',$section->id)
                              ->where('parent_category_id',null)
                              ->get();
     $sections = Section::get();
@@ -163,7 +163,7 @@ class PostController extends Controller
       ->with('serachsection', $section)
       ->with('sections', $sections)
       ->with('search', $search)
-      ->with('categories', $categorylist);
+      ->with('categories', $categories);
     } catch (\Exception $e) {
       return view('basic.category')
       ->with('main', $main)
@@ -173,7 +173,7 @@ class PostController extends Controller
       ->with('serachsection', $section)
       ->with('sections', $sections)
       ->with('search', $search)
-      ->with('categories', $categorylist);
+      ->with('categories', $categories);
     }
 
   }
