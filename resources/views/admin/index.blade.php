@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('admin.adminlayout')
 <div class="container">
-    <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a>
     <div class="row text-center">
       <div class="col-12">
         <hr>

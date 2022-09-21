@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
+@include('admin.adminlayout')
 @if(auth()->user()->global_privileges==1)
 <div class="container">
   <h4>Administratorzy</h4>
   <hr />
-  <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a>
     <a href="{{route('admin.index')}}" class="text-primary"> <u>Powrót</u> </a> <a href="{{route('admin.admins.create')}}" class="text-primary" >Dodaj administratora</a>
   <div class="table-responsive">
     <table class="table table-striped">
