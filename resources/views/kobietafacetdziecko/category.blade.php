@@ -30,7 +30,7 @@
             <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
               <h6><b>{{$post->title}}</b></h6>
             </a>
-            {{strip_tags(substr($post->postcontent, 0, 100))}}...
+            {{strip_tags(substr($post->summary, 0, 100))}}...
           </div>
         </div>
         @endif
@@ -55,7 +55,7 @@
             <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">
               <h6><b>{{$post->title}}</b></h6>
             </a>
-            {{strip_tags(substr($post->postcontent, 0, 100))}}...
+            {{strip_tags(substr($post->summary, 0, 100))}}...
           </div>
         </div>
         @endif

@@ -29,10 +29,10 @@ class Category extends Model
     }
 
     public function getposts() {
-      $categorylist = PostCategories::where('category_id', $this->id)->orderByDesc('created_at')->get();
+      $categorylist = PostCategories::where('category_id', $this->id)->orderByDesc('id')->get();
       $subcategory = $this->getsubcategories();
       foreach ($subcategory as $cat) {
-        $temp = PostCategories::where('category_id', $cat->id)->orderByDesc('created_at')->get();
+        $temp = PostCategories::where('category_id', $cat->id)->orderByDesc('id')->get();
         if($temp != null) {
           foreach ($temp as $temp2){
             $categorylist->push($temp2);

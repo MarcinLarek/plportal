@@ -128,7 +128,7 @@
           </div>
           <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
             <span><a class="text-section" href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">{{$listpost->title}}</a></span>
-            <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($listpost->postcontent, 0, 100))}}</p>
+            <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($listpost->summary, 0, 100))}}</p>
           </div>
         </div>
         @endforeach
@@ -147,7 +147,7 @@
           </div>
           <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
             <span><a class="text-section" href="{{ route('post.show', ['post' => $listpost, 'section' => $listpost->getsection()]) }}">{{$listpost->title}}</a></span>
-            <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($listpost->postcontent, 0, 100))}}</p>
+            <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($listpost->summary, 0, 100))}}</p>
           </div>
         </div>
         @endforeach
@@ -226,7 +226,7 @@
                 <a href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">
                 <b>{{$inpost->title}}</b>
                 </a>
-                <p>{{strip_tags(substr($inpost->postcontent, 0, 100))}}...</p>
+                <p>{{strip_tags(substr($inpost->summary, 0, 100))}}...</p>
               </div>
             </div>
           @endforeach
@@ -292,7 +292,7 @@
             </div>
             <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
               <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
-              <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
+              <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->summary, 0, 100))}}</p>
             </div>
           </div>
           @endforeach
@@ -380,7 +380,7 @@
             </div>
             <div class="col-xl-7 col-l-7 col-md-12 col-sm-12">
               <span><a class="text-section" href="{{ route('post.show', ['post' => $inpost, 'section' => $inpost->getsection()]) }}">{{$inpost->title}}</a></span>
-              <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->postcontent, 0, 100))}}</p>
+              <p class="text-dark" style="font-weight: lighter;">{{strip_tags(substr($inpost->summary, 0, 100))}}</p>
             </div>
           </div>
           @endforeach

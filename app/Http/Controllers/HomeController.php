@@ -11,11 +11,9 @@ class HomeController extends Controller
 {
      public function index()
      {
-       $firstpost = Post::orderBy('id', 'DESC')->first();
-       $posts = Post::orderBy('id', 'DESC')->skip(1)->take(24)->get();
+       $posts = Post::orderBy('id', 'DESC')->take(24)->get();
        $sections = Section::get();
          return view('plportal.index')
-         ->with('firstpost', $firstpost)
          ->with('posts', $posts)
          ->with('sections', $sections);
      }
