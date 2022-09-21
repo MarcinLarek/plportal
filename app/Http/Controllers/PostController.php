@@ -148,7 +148,7 @@ class PostController extends Controller
       $loop++;
     }
 
-    $main = $main->simplepaginate( 20 );
+    $main = $main->paginate( 20 );
     $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categories = Category::where('section_id',$section->id)
