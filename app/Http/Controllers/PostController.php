@@ -134,10 +134,12 @@ class PostController extends Controller
     if ($search == "null") {
         $search = null;
     }
+
     $main = Post::where('title','like', '%'.$search.'%')
                               ->orwhere('postcontent','like', '%'.$search.'%')
                               ->orderBy('id', 'DESC')
                               ->get();
+
     $loop = 0;
     foreach ($main as $temp) {
       if ($temp->getsection()->id != $section->id) {
@@ -146,7 +148,7 @@ class PostController extends Controller
       $loop++;
     }
 
-    $main = $main->paginate( 20 );
+    $main = $main->simplepaginate( 20 );
     $posts = $section->getposts()->sortByDesc('created_at')->take(10);
     $topposts = $section->getposts()->sortByDesc('reads')->take(10);
     $categories = Category::where('section_id',$section->id)
