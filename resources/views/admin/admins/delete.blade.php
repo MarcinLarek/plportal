@@ -1,10 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@include('admin.adminlayout')
 @if(auth()->user()->global_privileges==1)
 <hr />
-<div class="container">
-<a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a>
-</div>
 <div class="row">
   <div class="col-md-8 offset-md-2">
     <div class="card  border-0">

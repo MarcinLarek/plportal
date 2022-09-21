@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('admin.adminlayout')
 @if(auth()->user()->global_privileges==1)
-<a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a>
 <div class="container">
   <div class="row pt-5 pb-3">
     <h2>Zarządzanie przywilejami dla admina {{$admin->name}} {{$admin->surname}} ({{$admin->login}})</h2>

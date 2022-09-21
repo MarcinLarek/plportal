@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('admin.adminlayout')
 @if(auth()->user()->global_privileges==1)
 <script>
             function toggePassword() {
@@ -19,7 +20,7 @@
   <h1 class="mt-md-4">Wprowadź dane administratora</h1>
   <hr />
   <div class="pb-1">
-    <a class="text-primary" href="{{ route('admin.adminlogout') }}"> <b>Wyloguj się</b> </a><a href="{{route('admin.admins')}}" class="text-primary"> <u>Powrót</u> </a>
+    <a href="{{route('admin.admins')}}" class="text-primary"> <u>Powrót</u> </a>
   </div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
