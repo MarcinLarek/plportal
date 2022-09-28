@@ -127,3 +127,7 @@ a:hover {
 .carousel-caption > a > h5{
   margin-top: -100px;
 }
+
+.mainpagerightlist {
+    height: 100px;
+}

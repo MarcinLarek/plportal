@@ -1,3 +1,4 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/ckeditor.js"></script>
 <script>
 
 class MyUploadAdapter {

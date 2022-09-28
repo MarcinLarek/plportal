@@ -1,4 +1,17 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/appkultura.css": "/css/appkultura.css",
+    "/css/appkfd.css": "/css/appkfd.css",
+    "/css/apphobby.css": "/css/apphobby.css",
+    "/css/apphistoria.css": "/css/apphistoria.css",
+    "/css/appfakty.css": "/css/appfakty.css",
+    "/css/appbiznes.css": "/css/appbiznes.css",
+    "/css/appturystyka.css": "/css/appturystyka.css",
+    "/css/appsport.css": "/css/appsport.css",
+    "/css/appspoleczenstwo.css": "/css/appspoleczenstwo.css",
+    "/css/appsilyzbrojne.css": "/css/appsilyzbrojne.css",
+    "/css/appsalonpolityczny.css": "/css/appsalonpolityczny.css",
+    "/css/appplportal.css": "/css/appplportal.css",
+    "/css/appnauka.css": "/css/appnauka.css",
+    "/css/appmotoryzacja.css": "/css/appmotoryzacja.css",
+    "/css/appmainpage.css": "/css/appmainpage.css"
 }
