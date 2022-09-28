@@ -9,13 +9,15 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
-     public function index()
-     {
-       $posts = Post::orderBy('id', 'DESC')->take(24)->get();
-       $sections = Section::get();
-         return view('plportal.index')
-         ->with('posts', $posts)
-         ->with('sections', $sections);
-     }
-
+    public function index()
+    {
+        $posts = Post::with(['category', 'section'])->orderBy('id', 'DESC')->take(25)->get();
+        $firstpost = $posts->first();
+        $posts->shift();
+        $sections = Section::get();
+        return view('plportal.index')
+            ->with('firstpost', $firstpost)
+            ->with('posts', $posts)
+            ->with('sections', $sections);
+    }
 }

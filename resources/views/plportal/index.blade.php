@@ -133,16 +133,16 @@
       @foreach ($sectionposts->skip(9) as $post)
       @if($loop->iteration == 1)
       <div class="row pt-1">
-          <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-5">
-              <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><img src="/storage/{{ $post->image }}" class="w-100 mainpagerightlist"></a>
+          <div class="col-xl-5 col-l-5 col-md-5 col-sm-5 col-5 col-12">
+              <a href="{{ route('post.show', ['post' => $post, 'section' => $section]) }}"><img src="/storage/{{ $post->image }}" class="w-100 mainpagerightlist"></a>
           </div>
-          <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-7 rightlisttext">
-              <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}"><b>{{$post->title}}</b></a>
+          <div class="col-xl-7 col-l-7 col-md-7 col-sm-7 col-7 col-12 rightlisttext">
+              <a href="{{ route('post.show', ['post' => $post, 'section' =>$section]) }}"><b>{{$post->title}}</b></a>
           </div>
       </div>
       @else
       <div class="row pt-2">
-        <a href="{{ route('post.show', ['post' => $post, 'section' => $post->getsection()]) }}">• {{$post->title}}</a>
+        <a href="{{ route('post.show', ['post' => $post, 'section' => $section]) }}">• {{$post->title}}</a>
       </div>
       @endif
       @endforeach
